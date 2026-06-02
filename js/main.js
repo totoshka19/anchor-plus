@@ -1,15 +1,15 @@
 /* =========================================================================
    Интерфейсное поведение лендинга (без зависимостей).
    ========================================================================= */
-(function () {
+(() => {
   "use strict";
 
-  var header = document.getElementById("header");
-  var burger = document.getElementById("burger");
-  var toTop  = document.getElementById("toTop");
+  const header = document.getElementById("header");
+  const burger = document.getElementById("burger");
+  const toTop  = document.getElementById("toTop");
 
   /* --- Год в подвале --- */
-  var yearEl = document.getElementById("year");
+  const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* --- Мобильное меню (бургер) --- */
@@ -22,26 +22,24 @@
   function closeNav() { setNav(false); }
 
   if (burger) {
-    burger.addEventListener("click", function () {
-      setNav(!header.classList.contains("nav-open"));
-    });
+    burger.addEventListener("click", () => setNav(!header.classList.contains("nav-open")));
   }
   // Клик по пункту меню закрывает его
-  document.querySelectorAll(".nav__link").forEach(function (link) {
+  document.querySelectorAll(".nav__link").forEach((link) => {
     link.addEventListener("click", closeNav);
   });
   // Esc закрывает меню
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && header.classList.contains("nav-open")) closeNav();
   });
   // При переходе на десктоп меню закрываем (иначе блокировка прокрутки «зависнет»)
-  window.addEventListener("resize", function () {
+  window.addEventListener("resize", () => {
     if (window.innerWidth >= 1200 && header.classList.contains("nav-open")) closeNav();
   });
 
   /* --- Тень у хедера + кнопка «наверх» по скроллу --- */
   function onScroll() {
-    var y = window.pageYOffset || document.documentElement.scrollTop;
+    const y = window.pageYOffset || document.documentElement.scrollTop;
     header.classList.toggle("is-scrolled", y > 8);
     if (toTop) toTop.classList.toggle("is-visible", y > 500);
   }
@@ -49,16 +47,14 @@
   onScroll();
 
   if (toTop) {
-    toTop.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
 
   /* --- Появление блоков при прокрутке --- */
-  var reveals = document.querySelectorAll(".reveal");
+  const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
-    var io = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (entry) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
           obs.unobserve(entry.target); // анимируем один раз
@@ -66,7 +62,7 @@
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
-    reveals.forEach(function (el) { io.observe(el); });
+    reveals.forEach((el) => io.observe(el));
 
     // Если страница открылась уже прокрученной (перезагрузка или ссылка на #якорь),
     // сразу показываем всё, что в зоне видимости или выше неё — чтобы контент
@@ -75,7 +71,7 @@
     // в фоновой вкладке и уже после восстановления позиции прокрутки.
     function revealAboveFold() {
       if (!window.pageYOffset) return;
-      reveals.forEach(function (el) {
+      reveals.forEach((el) => {
         if (el.getBoundingClientRect().top < window.innerHeight) {
           el.classList.add("is-visible");
           io.unobserve(el);
@@ -86,6 +82,6 @@
     else window.addEventListener("load", revealAboveFold);
   } else {
     // Фолбэк: если IntersectionObserver не поддерживается — просто показываем
-    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+    reveals.forEach((el) => el.classList.add("is-visible"));
   }
 })();

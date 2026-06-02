@@ -8,6 +8,9 @@
         content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
   <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Хиро-фон большой и виден сразу — просим браузер начать грузить его как можно раньше
+       (CSS-фон иначе обнаруживается поздно, уже после разбора стилей) -->
+  <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -89,11 +92,11 @@
     <section class="hero" id="hero">
       <div class="hero__inner container">
         <p class="hero__eyebrow" data-i18n="hero.eyebrow">Транспортно-экспедиционная компания</p>
-        <h1 class="hero__title" data-i18n="hero.title">Международные перевозки угля, металла и ферросплавов</h1>
-        <p class="hero__subtitle" data-i18n="hero.subtitle">Доставляем грузы по железной дороге и мультимодально из России через Казахстан в страны Азии — от места добычи до конечного порта.</p>
+        <h1 class="hero__title" data-i18n="hero.title">Международные перевозки угля, металла и&nbsp;ферросплавов</h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">Доставляем грузы по&nbsp;железной дороге и&nbsp;мультимодально из&nbsp;России через&nbsp;Казахстан в&nbsp;страны Азии&nbsp;— от&nbsp;места добычи до&nbsp;конечного порта.</p>
         <div class="hero__actions">
-          <a href="#contacts" class="btn btn--primary" data-i18n="hero.cta1">Связаться с нами</a>
-          <a href="#cargo" class="btn btn--ghost" data-i18n="hero.cta2">Что мы перевозим</a>
+          <a href="#contacts" class="btn btn--primary" data-i18n="hero.cta1">Связаться с&nbsp;нами</a>
+          <a href="#cargo" class="btn btn--ghost" data-i18n="hero.cta2">Что&nbsp;мы перевозим</a>
         </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Прокрутить вниз"
@@ -107,17 +110,17 @@
       <div class="container">
         <div class="section__head reveal">
           <span class="kicker" data-i18n="about.kicker">О компании</span>
-          <h2 class="section__title" data-i18n="about.title">Надёжный партнёр в международной логистике</h2>
+          <h2 class="section__title" data-i18n="about.title">Надёжный партнёр в&nbsp;международной логистике</h2>
         </div>
         <div class="about__grid">
           <div class="about__text reveal">
-            <p data-i18n="about.p1">«АНКОР ПЛЮС» — транспортно-экспедиционная компания, специализирующаяся на международных перевозках навалочных и металлургических грузов. Мы организуем доставку угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.</p>
-            <p data-i18n="about.p2">Мы выстраиваем логистику под задачу клиента: от вывоза груза с места добычи автотранспортом до отправки по железной дороге и перевалки в морских портах. Берём на себя весь маршрут и контролируем груз на каждом этапе.</p>
+            <p data-i18n="about.p1">«АНКОР&nbsp;ПЛЮС»&nbsp;— транспортно-экспедиционная компания, специализирующаяся на&nbsp;международных перевозках навалочных и&nbsp;металлургических грузов. Мы&nbsp;организуем доставку угля, металлопродукции и&nbsp;ферросплавов из&nbsp;России через&nbsp;Казахстан в&nbsp;страны Азии.</p>
+            <p data-i18n="about.p2">Мы&nbsp;выстраиваем логистику под&nbsp;задачу клиента: от&nbsp;вывоза груза с&nbsp;места добычи автотранспортом до&nbsp;отправки по&nbsp;железной дороге и&nbsp;перевалки в&nbsp;морских портах. Берём на&nbsp;себя весь маршрут и&nbsp;контролируем груз на&nbsp;каждом этапе.</p>
           </div>
           <ul class="about__highlights reveal">
             <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl1">Международные железнодорожные перевозки</span></li>
             <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl2">Мультимодальные логистические решения</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl3">Индивидуальный подход к каждому грузу</span></li>
+            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl3">Индивидуальный подход к&nbsp;каждому грузу</span></li>
           </ul>
         </div>
       </div>
@@ -128,30 +131,32 @@
       <div class="container">
         <div class="section__head reveal">
           <span class="kicker" data-i18n="cargo.kicker">Грузы</span>
-          <h2 class="section__title" data-i18n="cargo.title">Что мы перевозим</h2>
-          <p class="section__lead" data-i18n="cargo.lead">Специализируемся на навалочных и металлургических грузах, которые требуют надёжной логистики и опыта.</p>
+          <h2 class="section__title" data-i18n="cargo.title">Что&nbsp;мы перевозим</h2>
+          <p class="section__lead" data-i18n="cargo.lead">Специализируемся на&nbsp;навалочных и&nbsp;металлургических грузах, которые требуют надёжной логистики и&nbsp;опыта.</p>
         </div>
         <div class="cards">
           <article class="card reveal">
-            <!-- TODO: заменить .card__media на <img src="img/cargo-coal.jpg" alt="Уголь"> -->
-            <div class="card__media card__media--a"><svg class="card__icon"><use href="#i-coal"/></svg></div>
+            <img class="card__media" src="img/cargo-coal.jpg" width="800" height="450"
+                 alt="Перевозка угля навалом" data-i18n-alt="cargo.coal.alt" loading="lazy" decoding="async">
             <div class="card__body">
               <h3 class="card__title" data-i18n="cargo.coal.title">Уголь</h3>
-              <p class="card__text" data-i18n="cargo.coal.text">Каменный и коксующийся уголь навалом. Организуем отправки маршрутными и повагонными партиями.</p>
+              <p class="card__text" data-i18n="cargo.coal.text">Каменный и&nbsp;коксующийся уголь навалом. Организуем отправки маршрутными и&nbsp;повагонными партиями.</p>
             </div>
           </article>
           <article class="card reveal">
-            <div class="card__media card__media--b"><svg class="card__icon"><use href="#i-metal"/></svg></div>
+            <img class="card__media" src="img/cargo-metal.jpg" width="800" height="450"
+                 alt="Перевозка металлопродукции" data-i18n-alt="cargo.metal.alt" loading="lazy" decoding="async">
             <div class="card__body">
               <h3 class="card__title" data-i18n="cargo.metal.title">Металлопродукция</h3>
-              <p class="card__text" data-i18n="cargo.metal.text">Прокат, заготовка, трубы и металлоизделия. Подбираем подвижной состав под тип груза.</p>
+              <p class="card__text" data-i18n="cargo.metal.text">Прокат, заготовка, трубы и&nbsp;металлоизделия. Подбираем подвижной состав под&nbsp;тип груза.</p>
             </div>
           </article>
           <article class="card reveal">
-            <div class="card__media card__media--c"><svg class="card__icon"><use href="#i-ferro"/></svg></div>
+            <img class="card__media" src="img/cargo-ferro.jpg" width="800" height="450"
+                 alt="Перевозка ферросплавов" data-i18n-alt="cargo.ferro.alt" loading="lazy" decoding="async">
             <div class="card__body">
               <h3 class="card__title" data-i18n="cargo.ferro.title">Ферросплавы</h3>
-              <p class="card__text" data-i18n="cargo.ferro.text">Ферросилиций, ферромарганец, силикомарганец и другие сплавы. Перевозка с соблюдением требований к таре.</p>
+              <p class="card__text" data-i18n="cargo.ferro.text">Ферросилиций, ферромарганец, силикомарганец и&nbsp;другие сплавы. Перевозка с&nbsp;соблюдением требований к&nbsp;таре.</p>
             </div>
           </article>
         </div>
@@ -164,7 +169,7 @@
         <div class="section__head reveal">
           <span class="kicker" data-i18n="geo.kicker">География</span>
           <h2 class="section__title" data-i18n="geo.title">География нашей деятельности</h2>
-          <p class="section__lead" data-i18n="geo.lead">Основной маршрут — из России через Казахстан в страны Азии. Доставляем груз любым видом транспорта и организуем перевалку в морских портах.</p>
+          <p class="section__lead" data-i18n="geo.lead">Основной маршрут&nbsp;— из&nbsp;России через&nbsp;Казахстан в&nbsp;страны Азии. Доставляем груз любым видом транспорта и&nbsp;организуем перевалку в&nbsp;морских портах.</p>
         </div>
         <div class="geo">
           <div class="geo__map reveal">
@@ -178,21 +183,21 @@
               <span class="geo__mode-ic"><svg class="icon"><use href="#i-truck"/></svg></span>
               <span class="geo__mode-txt">
                 <span class="geo__mode-title" data-i18n="geo.road">Автотранспорт</span>
-                <span class="geo__mode-desc" data-i18n="geo.roadDesc">Вывоз груза с места добычи и доставка до железнодорожного терминала.</span>
+                <span class="geo__mode-desc" data-i18n="geo.roadDesc">Вывоз груза с&nbsp;места добычи и&nbsp;доставка до&nbsp;железнодорожного терминала.</span>
               </span>
             </li>
             <li class="geo__mode">
               <span class="geo__mode-ic"><svg class="icon"><use href="#i-train"/></svg></span>
               <span class="geo__mode-txt">
                 <span class="geo__mode-title" data-i18n="geo.rail">Железная дорога</span>
-                <span class="geo__mode-desc" data-i18n="geo.railDesc">Основное плечо маршрута: перевозки по сети РЖД и железных дорог Казахстана.</span>
+                <span class="geo__mode-desc" data-i18n="geo.railDesc">Основное плечо маршрута: перевозки по&nbsp;сети РЖД и&nbsp;железных дорог Казахстана.</span>
               </span>
             </li>
             <li class="geo__mode">
               <span class="geo__mode-ic"><svg class="icon"><use href="#i-ship"/></svg></span>
               <span class="geo__mode-txt">
                 <span class="geo__mode-title" data-i18n="geo.sea">Морская перевалка</span>
-                <span class="geo__mode-desc" data-i18n="geo.seaDesc">Перевалка в морских портах и отправка в страны Азии.</span>
+                <span class="geo__mode-desc" data-i18n="geo.seaDesc">Перевалка в&nbsp;морских портах и&nbsp;отправка в&nbsp;страны Азии.</span>
               </span>
             </li>
           </ul>
@@ -205,38 +210,38 @@
       <div class="container">
         <div class="section__head reveal">
           <span class="kicker" data-i18n="why.kicker">Преимущества</span>
-          <h2 class="section__title" data-i18n="why.title">Почему выбирают нас</h2>
+          <h2 class="section__title" data-i18n="why.title">Почему выбирают&nbsp;нас</h2>
         </div>
         <div class="features">
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-layers"/></svg></div>
             <h3 class="feature__title" data-i18n="why.f1.title">Мультимодальность</h3>
-            <p class="feature__text" data-i18n="why.f1.text">Авто, железная дорога и морская перевалка в рамках одного маршрута.</p>
+            <p class="feature__text" data-i18n="why.f1.text">Авто, железная дорога и&nbsp;морская перевалка в&nbsp;рамках одного маршрута.</p>
           </div>
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-route"/></svg></div>
             <h3 class="feature__title" data-i18n="why.f2.title">Прямые маршруты</h3>
-            <p class="feature__text" data-i18n="why.f2.text">Отлаженные направления через Казахстан в страны Азии.</p>
+            <p class="feature__text" data-i18n="why.f2.text">Отлаженные направления через&nbsp;Казахстан в&nbsp;страны Азии.</p>
           </div>
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-calc"/></svg></div>
             <h3 class="feature__title" data-i18n="why.f3.title">Индивидуальный расчёт</h3>
-            <p class="feature__text" data-i18n="why.f3.text">Рассчитываем ставку и схему доставки под конкретный груз.</p>
+            <p class="feature__text" data-i18n="why.f3.text">Рассчитываем ставку и&nbsp;схему доставки под&nbsp;конкретный груз.</p>
           </div>
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-shield"/></svg></div>
-            <h3 class="feature__title" data-i18n="why.f4.title">Контроль на всех этапах</h3>
-            <p class="feature__text" data-i18n="why.f4.text">Сопровождаем груз от места добычи до получателя.</p>
+            <h3 class="feature__title" data-i18n="why.f4.title">Контроль на&nbsp;всех этапах</h3>
+            <p class="feature__text" data-i18n="why.f4.text">Сопровождаем груз от&nbsp;места добычи до&nbsp;получателя.</p>
           </div>
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-boxes"/></svg></div>
             <h3 class="feature__title" data-i18n="why.f5.title">Навалочные грузы</h3>
-            <p class="feature__text" data-i18n="why.f5.text">Опыт работы с углём, металлом и ферросплавами.</p>
+            <p class="feature__text" data-i18n="why.f5.text">Опыт работы с&nbsp;углём, металлом и&nbsp;ферросплавами.</p>
           </div>
           <div class="feature reveal">
             <div class="feature__icon"><svg class="icon"><use href="#i-globe"/></svg></div>
             <h3 class="feature__title" data-i18n="why.f6.title">Международная экспедиция</h3>
-            <p class="feature__text" data-i18n="why.f6.text">Оформление документов и сопровождение на границах.</p>
+            <p class="feature__text" data-i18n="why.f6.text">Оформление документов и&nbsp;сопровождение на&nbsp;границах.</p>
           </div>
         </div>
       </div>
@@ -248,7 +253,7 @@
         <div class="section__head reveal">
           <span class="kicker" data-i18n="partners.kicker">Партнёры</span>
           <h2 class="section__title" data-i18n="partners.title">Наши партнёры</h2>
-          <p class="section__lead" data-i18n="partners.lead">Мы открыты к сотрудничеству с грузоотправителями, перевозчиками и портовыми операторами.</p>
+          <p class="section__lead" data-i18n="partners.lead">Мы&nbsp;открыты к&nbsp;сотрудничеству с&nbsp;грузоотправителями, перевозчиками и&nbsp;портовыми операторами.</p>
         </div>
         <!-- TODO: заменить заглушки на реальные логотипы партнёров (по согласованию) -->
         <div class="partners reveal">
@@ -267,8 +272,8 @@
       <div class="container">
         <div class="section__head reveal">
           <span class="kicker" data-i18n="contacts.kicker">Контакты</span>
-          <h2 class="section__title" data-i18n="contacts.title">Свяжитесь с нами</h2>
-          <p class="section__lead" data-i18n="contacts.lead">Позвоните нам для консультации и расчёта стоимости перевозки — подберём оптимальный маршрут.</p>
+          <h2 class="section__title" data-i18n="contacts.title">Свяжитесь с&nbsp;нами</h2>
+          <p class="section__lead" data-i18n="contacts.lead">Позвоните&nbsp;нам для&nbsp;консультации и&nbsp;расчёта стоимости перевозки&nbsp;— подберём оптимальный маршрут.</p>
         </div>
         <div class="contacts">
           <a class="contact-card" href="tel:+70000000000">
@@ -278,13 +283,13 @@
           </a>
           <a class="contact-card" href="mailto:info@ankorplus.ru">
             <span class="contact-card__ic"><svg class="icon"><use href="#i-mail"/></svg></span>
-            <span class="contact-card__label" data-i18n="contacts.emailLabel">Эл. почта</span>
+            <span class="contact-card__label" data-i18n="contacts.emailLabel">Эл.&nbsp;почта</span>
             <span class="contact-card__value">info@ankorplus.ru</span>
           </a>
           <div class="contact-card contact-card--static">
             <span class="contact-card__ic"><svg class="icon"><use href="#i-pin"/></svg></span>
             <span class="contact-card__label" data-i18n="contacts.addressLabel">Адрес</span>
-            <span class="contact-card__value" data-i18n="contacts.addressValue">г. Москва, ул. Примерная, д. 1</span>
+            <span class="contact-card__value" data-i18n="contacts.addressValue">г.&nbsp;Москва, ул.&nbsp;Примерная, д.&nbsp;1</span>
           </div>
         </div>
       </div>
@@ -297,7 +302,7 @@
     <div class="container footer__inner">
       <div class="footer__col footer__brand">
         <img src="img/logo.svg" alt="АНКОР ПЛЮС" class="footer__logo" width="200" height="54">
-        <p class="footer__desc" data-i18n="footer.desc">Транспортно-экспедиционная компания. Международные перевозки угля, металлопродукции и ферросплавов.</p>
+        <p class="footer__desc" data-i18n="footer.desc">Транспортно-экспедиционная компания. Международные перевозки угля, металлопродукции и&nbsp;ферросплавов.</p>
       </div>
 
       <div class="footer__col">
@@ -316,15 +321,15 @@
         <ul class="footer__list">
           <li><a href="tel:+70000000000">+7 (000) 000-00-00</a></li>
           <li><a href="mailto:info@ankorplus.ru">info@ankorplus.ru</a></li>
-          <li><span data-i18n="contacts.addressValue">г. Москва, ул. Примерная, д. 1</span></li>
+          <li><span data-i18n="contacts.addressValue">г.&nbsp;Москва, ул.&nbsp;Примерная, д.&nbsp;1</span></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>© <span id="year">2026</span> <span data-i18n="footer.copy">АНКОР ПЛЮС. Все права защищены.</span></p>
-        <p class="footer__legal" data-i18n="footer.legal">ИНН 0000000000 · ОГРН 0000000000000</p>
+        <p>©&nbsp;<span id="year">2026</span> <span data-i18n="footer.copy">АНКОР&nbsp;ПЛЮС. Все&nbsp;права защищены.</span></p>
+        <p class="footer__legal" data-i18n="footer.legal">ИНН&nbsp;0000000000 · ОГРН&nbsp;0000000000000</p>
       </div>
     </div>
   </footer>

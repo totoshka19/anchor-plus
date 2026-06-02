@@ -12,11 +12,11 @@
    Чтобы добавить новую переводимую строку — повесьте в HTML атрибут
    data-i18n="мой.ключ" и добавьте 'мой.ключ' в EN.
    ========================================================================= */
-(function () {
+(() => {
   "use strict";
 
   /* ----------------------------- Словарь EN ----------------------------- */
-  var EN = {
+  const EN = {
     "meta.title": "ANKOR PLUS — international shipping of coal, metal and ferroalloys",
     "meta.description": "Freight forwarding company. Rail and multimodal transportation of coal, metal products and ferroalloys from Russia via Kazakhstan to Asian countries.",
 
@@ -53,6 +53,9 @@
     "cargo.metal.text": "Rolled metal, billets, pipes and metal goods. We select rolling stock to match the cargo.",
     "cargo.ferro.title": "Ferroalloys",
     "cargo.ferro.text": "Ferrosilicon, ferromanganese, silicomanganese and other alloys, shipped with proper packaging.",
+    "cargo.coal.alt": "Coal bulk transportation",
+    "cargo.metal.alt": "Metal products transportation",
+    "cargo.ferro.alt": "Ferroalloys transportation",
 
     "geo.kicker": "Geography",
     "geo.title": "Geography of our operations",
@@ -101,35 +104,35 @@
   };
 
   /* --------------------------- Движок (общий) --------------------------- */
-  var STORAGE_KEY = "ankor-lang";
-  var PREFIX = "data-i18n";
-  var DICT = { ru: {}, en: EN };
-  var targets = [];        // [{ el, attr|null, key }]
-  var buttons = [];
-  var current = "ru";
+  const STORAGE_KEY = "ankor-lang";
+  const PREFIX = "data-i18n";
+  const DICT = { ru: {}, en: EN };
+  const targets = [];      // [{ el, attr|null, key }]
+  let buttons = [];
+  let current = "ru";
 
   // Собираем все переводимые цели и заодно снимаем русские строки.
   function collect() {
-    var nodes = document.querySelectorAll("[" + PREFIX + "], [" + PREFIX + "-content], [" + PREFIX + "-alt], [" + PREFIX + "-src], [" + PREFIX + "-aria-label]");
-    nodes.forEach(function (el) {
-      for (var i = 0; i < el.attributes.length; i++) {
-        var name = el.attributes[i].name;
-        if (name !== PREFIX && name.indexOf(PREFIX + "-") !== 0) continue;
+    const nodes = document.querySelectorAll(`[${PREFIX}], [${PREFIX}-content], [${PREFIX}-alt], [${PREFIX}-src], [${PREFIX}-aria-label]`);
+    nodes.forEach((el) => {
+      for (const attrNode of el.attributes) {
+        const name = attrNode.name;
+        if (name !== PREFIX && !name.startsWith(`${PREFIX}-`)) continue;
 
-        var attr = (name === PREFIX) ? null : name.slice(PREFIX.length + 1); // напр. "alt", "src", "content"
-        var key = el.attributes[i].value;
+        const attr = name === PREFIX ? null : name.slice(PREFIX.length + 1); // напр. "alt", "src", "content"
+        const key = attrNode.value;
 
-        targets.push({ el: el, attr: attr, key: key });
+        targets.push({ el, attr, key });
         // RU = то, что уже стоит в разметке
-        DICT.ru[key] = (attr === null) ? el.textContent : el.getAttribute(attr);
+        DICT.ru[key] = attr === null ? el.textContent : el.getAttribute(attr);
       }
     });
   }
 
   function apply(lang) {
-    var map = DICT[lang] || {};
-    targets.forEach(function (t) {
-      var val = map[t.key];
+    const map = DICT[lang] || {};
+    targets.forEach((t) => {
+      const val = map[t.key];
       if (val == null) return;               // нет перевода — оставляем как есть
       if (t.attr === null) t.el.textContent = val;
       else t.el.setAttribute(t.attr, val);
@@ -141,22 +144,20 @@
     if (lang !== "ru" && lang !== "en") lang = "ru";
     current = lang;
     apply(lang);
-    buttons.forEach(function (b) {
-      b.classList.toggle("is-active", b.getAttribute("data-lang") === lang);
-    });
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-lang") === lang));
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
   }
 
   function init() {
     collect();
 
-    buttons = Array.prototype.slice.call(document.querySelectorAll(".lang-switch__btn"));
-    buttons.forEach(function (b) {
-      b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
+    buttons = Array.from(document.querySelectorAll(".lang-switch__btn"));
+    buttons.forEach((b) => {
+      b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));
     });
 
-    var saved;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch {}
     // По умолчанию — русский. Меняем только если пользователь раньше выбрал EN.
     setLang(saved === "en" ? "en" : "ru");
   }
