@@ -17,10 +17,13 @@
 
   /* ----------------------------- Словарь EN ----------------------------- */
   const EN = {
-    "meta.title": "ANKOR PLUS — international shipping of coal, metal and ferroalloys",
+    "meta.title": "ANCHOR PLUS — international shipping of coal, metal and ferroalloys",
     "meta.description": "Freight forwarding company. Rail and multimodal transportation of coal, metal products and ferroalloys from Russia via Kazakhstan to Asian countries.",
 
     "a11y.skip": "Skip to content",
+
+    "logo.src": "img/logo-en.svg",
+    "brand.name": "ANCHOR PLUS",
 
     "nav.about": "About",
     "nav.cargo": "Cargo",
@@ -38,7 +41,7 @@
 
     "about.kicker": "About us",
     "about.title": "A reliable partner in international logistics",
-    "about.p1": "ANKOR PLUS is a freight forwarding company specializing in international transportation of bulk and metallurgical cargo. We arrange delivery of coal, metal products and ferroalloys from Russia via Kazakhstan to Asian countries.",
+    "about.p1": "ANCHOR PLUS is a freight forwarding company specializing in international transportation of bulk and metallurgical cargo. We arrange delivery of coal, metal products and ferroalloys from Russia via Kazakhstan to Asian countries.",
     "about.p2": "We build logistics around the client's needs: from picking up cargo at the extraction site by road to rail transportation and transshipment at sea ports. We handle the entire route and keep the cargo under control at every stage.",
     "about.hl1": "International rail transportation",
     "about.hl2": "Multimodal logistics solutions",
@@ -99,7 +102,7 @@
     "footer.desc": "Freight forwarding company. International transportation of coal, metal products and ferroalloys.",
     "footer.navTitle": "Navigation",
     "footer.contactsTitle": "Contacts",
-    "footer.copy": "ANKOR PLUS. All rights reserved.",
+    "footer.copy": "ANCHOR PLUS. All rights reserved.",
     "footer.legal": "TIN 0000000000 · PSRN 0000000000000"
   };
 
