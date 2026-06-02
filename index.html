@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">АНКОР ПЛЮС — международные перевозки угля, металла и ферросплавов</title>
+  <meta name="description" data-i18n-content="meta.description"
+        content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
+  <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SVG-спрайт: иконки определяются один раз и переиспользуются через <use>.
+       Это держит разметку чистой и не тянет внешних зависимостей.
+  =========================================================================== -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3l-3.2 15.1c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.3l-4.9-1.5c-1-.3-1-1 .2-1.5l19.1-7.4c.9-.3 1.7.2 1.4 1.4z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-2.7 4c-.2 0-.5 0-.7.4-.2.4-.9 1-.9 2.2s.9 2.5 1 2.7c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.6-.3c-.3-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.6-2.1-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h11v11H3z"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></symbol>
+    <symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14"/><path d="M9 16l-2 4M15 16l2 4"/></symbol>
+    <symbol id="i-ship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l2 5h14l2-5z"/><path d="M5 15V9l7-2 7 2v6"/><path d="M12 3v4"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8 17c5 0 8-2 8-7"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h0M12 11h0M16 11h0M8 15h0M12 15h0M16 15h0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-boxes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M12 3v18M4 7l8 4 8-4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+    <symbol id="i-coal" viewBox="0 0 24 24"><path fill="currentColor" d="M6 9l4-2 5 1 3 4-2 4-5 2-5-1-2-4z" opacity=".95"/><path fill="currentColor" opacity=".55" d="M15 13l3-1 3 2-1 3-3 1-2-2z"/></symbol>
+    <symbol id="i-metal" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v3h-6v10h6v3H4v-3h6V7H4z"/></symbol>
+    <symbol id="i-ferro" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="8" cy="15" r="3"/><circle cx="14" cy="15" r="3"/><circle cx="11" cy="9.5" r="3"/><circle cx="17" cy="10" r="2.2"/><circle cx="6" cy="10" r="2.2"/></g></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержимому</a>
+
+  <!-- ============================ ХЕДЕР ============================ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo" aria-label="АНКОР ПЛЮС">
+        <img src="img/logo.svg" alt="АНКОР ПЛЮС" class="logo__img" width="210" height="56">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li><a href="#about"    class="nav__link" data-i18n="nav.about">О компании</a></li>
+          <li><a href="#cargo"    class="nav__link" data-i18n="nav.cargo">Грузы</a></li>
+          <li><a href="#geo"      class="nav__link" data-i18n="nav.geo">География</a></li>
+          <li><a href="#why"      class="nav__link" data-i18n="nav.why">Преимущества</a></li>
+          <li><a href="#partners" class="nav__link" data-i18n="nav.partners">Партнёры</a></li>
+          <li><a href="#contacts" class="nav__link" data-i18n="nav.contacts">Контакты</a></li>
+          <li class="nav__phone"><a href="tel:+70000000000" class="nav__link">+7 (000) 000-00-00</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="tel:+70000000000" class="header__phone">
+          <svg class="icon"><use href="#i-phone"/></svg>
+          <span class="header__phone-num">+7 (000) 000-00-00</span>
+        </a>
+
+        <div class="lang-switch" role="group" aria-label="Язык / Language">
+          <button type="button" class="lang-switch__btn is-active" data-lang="ru">RU</button>
+          <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+        </div>
+
+        <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================ ХИРО ============================ -->
+    <section class="hero" id="hero">
+      <div class="hero__inner container">
+        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Транспортно-экспедиционная компания</p>
+        <h1 class="hero__title" data-i18n="hero.title">Международные перевозки угля, металла и ферросплавов</h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">Доставляем грузы по железной дороге и мультимодально из России через Казахстан в страны Азии — от места добычи до конечного порта.</p>
+        <div class="hero__actions">
+          <a href="#contacts" class="btn btn--primary" data-i18n="hero.cta1">Связаться с нами</a>
+          <a href="#cargo" class="btn btn--ghost" data-i18n="hero.cta2">Что мы перевозим</a>
+        </div>
+      </div>
+      <a href="#about" class="hero__scroll" aria-label="Прокрутить вниз"
+         data-i18n-aria-label="hero.scroll">
+        <svg class="icon"><use href="#i-chevron-down"/></svg>
+      </a>
+    </section>
+
+    <!-- ============================ О КОМПАНИИ ============================ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="about.kicker">О компании</span>
+          <h2 class="section__title" data-i18n="about.title">Надёжный партнёр в международной логистике</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p data-i18n="about.p1">«АНКОР ПЛЮС» — транспортно-экспедиционная компания, специализирующаяся на международных перевозках навалочных и металлургических грузов. Мы организуем доставку угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.</p>
+            <p data-i18n="about.p2">Мы выстраиваем логистику под задачу клиента: от вывоза груза с места добычи автотранспортом до отправки по железной дороге и перевалки в морских портах. Берём на себя весь маршрут и контролируем груз на каждом этапе.</p>
+          </div>
+          <ul class="about__highlights reveal">
+            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl1">Международные железнодорожные перевозки</span></li>
+            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl2">Мультимодальные логистические решения</span></li>
+            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="about.hl3">Индивидуальный подход к каждому грузу</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ЧТО ПЕРЕВОЗИМ ============================ -->
+    <section class="section section--alt" id="cargo">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="cargo.kicker">Грузы</span>
+          <h2 class="section__title" data-i18n="cargo.title">Что мы перевозим</h2>
+          <p class="section__lead" data-i18n="cargo.lead">Специализируемся на навалочных и металлургических грузах, которые требуют надёжной логистики и опыта.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <!-- TODO: заменить .card__media на <img src="img/cargo-coal.jpg" alt="Уголь"> -->
+            <div class="card__media card__media--a"><svg class="card__icon"><use href="#i-coal"/></svg></div>
+            <div class="card__body">
+              <h3 class="card__title" data-i18n="cargo.coal.title">Уголь</h3>
+              <p class="card__text" data-i18n="cargo.coal.text">Каменный и коксующийся уголь навалом. Организуем отправки маршрутными и повагонными партиями.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card__media card__media--b"><svg class="card__icon"><use href="#i-metal"/></svg></div>
+            <div class="card__body">
+              <h3 class="card__title" data-i18n="cargo.metal.title">Металлопродукция</h3>
+              <p class="card__text" data-i18n="cargo.metal.text">Прокат, заготовка, трубы и металлоизделия. Подбираем подвижной состав под тип груза.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card__media card__media--c"><svg class="card__icon"><use href="#i-ferro"/></svg></div>
+            <div class="card__body">
+              <h3 class="card__title" data-i18n="cargo.ferro.title">Ферросплавы</h3>
+              <p class="card__text" data-i18n="cargo.ferro.text">Ферросилиций, ферромарганец, силикомарганец и другие сплавы. Перевозка с соблюдением требований к таре.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ГЕОГРАФИЯ ============================ -->
+    <section class="section" id="geo">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="geo.kicker">География</span>
+          <h2 class="section__title" data-i18n="geo.title">География нашей деятельности</h2>
+          <p class="section__lead" data-i18n="geo.lead">Основной маршрут — из России через Казахстан в страны Азии. Доставляем груз любым видом транспорта и организуем перевалку в морских портах.</p>
+        </div>
+        <div class="geo">
+          <div class="geo__map reveal">
+            <!-- Карта своя для каждого языка: подписи на ней должны совпадать с языком сайта -->
+            <img src="img/map-ru.svg" data-i18n-src="geo.map"
+                 alt="Карта маршрутов из России через Казахстан в страны Азии"
+                 data-i18n-alt="geo.mapAlt" class="geo__img">
+          </div>
+          <ul class="geo__modes reveal">
+            <li class="geo__mode">
+              <span class="geo__mode-ic"><svg class="icon"><use href="#i-truck"/></svg></span>
+              <span class="geo__mode-txt">
+                <span class="geo__mode-title" data-i18n="geo.road">Автотранспорт</span>
+                <span class="geo__mode-desc" data-i18n="geo.roadDesc">Вывоз груза с места добычи и доставка до железнодорожного терминала.</span>
+              </span>
+            </li>
+            <li class="geo__mode">
+              <span class="geo__mode-ic"><svg class="icon"><use href="#i-train"/></svg></span>
+              <span class="geo__mode-txt">
+                <span class="geo__mode-title" data-i18n="geo.rail">Железная дорога</span>
+                <span class="geo__mode-desc" data-i18n="geo.railDesc">Основное плечо маршрута: перевозки по сети РЖД и железных дорог Казахстана.</span>
+              </span>
+            </li>
+            <li class="geo__mode">
+              <span class="geo__mode-ic"><svg class="icon"><use href="#i-ship"/></svg></span>
+              <span class="geo__mode-txt">
+                <span class="geo__mode-title" data-i18n="geo.sea">Морская перевалка</span>
+                <span class="geo__mode-desc" data-i18n="geo.seaDesc">Перевалка в морских портах и отправка в страны Азии.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ПОЧЕМУ МЫ ============================ -->
+    <section class="section section--alt" id="why">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="why.kicker">Преимущества</span>
+          <h2 class="section__title" data-i18n="why.title">Почему выбирают нас</h2>
+        </div>
+        <div class="features">
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-layers"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f1.title">Мультимодальность</h3>
+            <p class="feature__text" data-i18n="why.f1.text">Авто, железная дорога и морская перевалка в рамках одного маршрута.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-route"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f2.title">Прямые маршруты</h3>
+            <p class="feature__text" data-i18n="why.f2.text">Отлаженные направления через Казахстан в страны Азии.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-calc"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f3.title">Индивидуальный расчёт</h3>
+            <p class="feature__text" data-i18n="why.f3.text">Рассчитываем ставку и схему доставки под конкретный груз.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f4.title">Контроль на всех этапах</h3>
+            <p class="feature__text" data-i18n="why.f4.text">Сопровождаем груз от места добычи до получателя.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-boxes"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f5.title">Навалочные грузы</h3>
+            <p class="feature__text" data-i18n="why.f5.text">Опыт работы с углём, металлом и ферросплавами.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg class="icon"><use href="#i-globe"/></svg></div>
+            <h3 class="feature__title" data-i18n="why.f6.title">Международная экспедиция</h3>
+            <p class="feature__text" data-i18n="why.f6.text">Оформление документов и сопровождение на границах.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ПАРТНЁРЫ ============================ -->
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="partners.kicker">Партнёры</span>
+          <h2 class="section__title" data-i18n="partners.title">Наши партнёры</h2>
+          <p class="section__lead" data-i18n="partners.lead">Мы открыты к сотрудничеству с грузоотправителями, перевозчиками и портовыми операторами.</p>
+        </div>
+        <!-- TODO: заменить заглушки на реальные логотипы партнёров (по согласованию) -->
+        <div class="partners reveal">
+          <div class="partners__item">Логотип</div>
+          <div class="partners__item">Логотип</div>
+          <div class="partners__item">Логотип</div>
+          <div class="partners__item">Логотип</div>
+          <div class="partners__item">Логотип</div>
+          <div class="partners__item">Логотип</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ КОНТАКТЫ ============================ -->
+    <section class="section section--contacts" id="contacts">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="contacts.kicker">Контакты</span>
+          <h2 class="section__title" data-i18n="contacts.title">Свяжитесь с нами</h2>
+          <p class="section__lead" data-i18n="contacts.lead">Позвоните нам для консультации и расчёта стоимости перевозки — подберём оптимальный маршрут.</p>
+        </div>
+        <div class="contacts">
+          <a class="contact-card" href="tel:+70000000000">
+            <span class="contact-card__ic"><svg class="icon"><use href="#i-phone"/></svg></span>
+            <span class="contact-card__label" data-i18n="contacts.phoneLabel">Телефон</span>
+            <span class="contact-card__value">+7 (000) 000-00-00</span>
+          </a>
+          <a class="contact-card" href="mailto:info@ankorplus.ru">
+            <span class="contact-card__ic"><svg class="icon"><use href="#i-mail"/></svg></span>
+            <span class="contact-card__label" data-i18n="contacts.emailLabel">Эл. почта</span>
+            <span class="contact-card__value">info@ankorplus.ru</span>
+          </a>
+          <div class="contact-card contact-card--static">
+            <span class="contact-card__ic"><svg class="icon"><use href="#i-pin"/></svg></span>
+            <span class="contact-card__label" data-i18n="contacts.addressLabel">Адрес</span>
+            <span class="contact-card__value" data-i18n="contacts.addressValue">г. Москва, ул. Примерная, д. 1</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ ФУТЕР ============================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col footer__brand">
+        <img src="img/logo.svg" alt="АНКОР ПЛЮС" class="footer__logo" width="200" height="54">
+        <p class="footer__desc" data-i18n="footer.desc">Транспортно-экспедиционная компания. Международные перевозки угля, металлопродукции и ферросплавов.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title" data-i18n="footer.navTitle">Навигация</h4>
+        <ul class="footer__list">
+          <li><a href="#about"    data-i18n="nav.about">О компании</a></li>
+          <li><a href="#cargo"    data-i18n="nav.cargo">Грузы</a></li>
+          <li><a href="#geo"      data-i18n="nav.geo">География</a></li>
+          <li><a href="#why"      data-i18n="nav.why">Преимущества</a></li>
+          <li><a href="#partners" data-i18n="nav.partners">Партнёры</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title" data-i18n="footer.contactsTitle">Контакты</h4>
+        <ul class="footer__list">
+          <li><a href="tel:+70000000000">+7 (000) 000-00-00</a></li>
+          <li><a href="mailto:info@ankorplus.ru">info@ankorplus.ru</a></li>
+          <li><span data-i18n="contacts.addressValue">г. Москва, ул. Примерная, д. 1</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© <span id="year">2026</span> <span data-i18n="footer.copy">АНКОР ПЛЮС. Все права защищены.</span></p>
+        <p class="footer__legal" data-i18n="footer.legal">ИНН 0000000000 · ОГРН 0000000000000</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Наверх">
+    <svg class="icon"><use href="#i-arrow-up"/></svg>
+  </button>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

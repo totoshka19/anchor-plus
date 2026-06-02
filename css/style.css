@@ -1,0 +1,451 @@
+/* =========================================================================
+   АНКОР ПЛЮС — стили лендинга
+   Подход: MOBILE-FIRST по брейкпоинтам.
+     • База (без медиазапросов) — мобайл, рассчитан на ширину от 375px.
+     • @media (min-width: 768px)  — планшет.
+     • @media (min-width: 1200px) — десктоп.
+   Палитра и ключевые величины — в :root (меняются в одном месте).
+   ========================================================================= */
+
+:root {
+  /* Фирменная палитра (синий градиент из логотипа + бело-синий фон) */
+  --c-navy:        #14284a;   /* самый тёмный синий */
+  --c-blue:        #2b5a9e;   /* основной синий */
+  --c-blue-light:  #4b7cc0;   /* светлый синий (акценты) */
+  --grad-brand:    linear-gradient(135deg, #14284a 0%, #234d8a 55%, #3d6fb5 100%);
+
+  --c-text:        #1c2a40;   /* основной текст */
+  --c-muted:       #5d6e88;   /* приглушённый текст */
+  --c-bg:          #ffffff;   /* фон */
+  --c-bg-alt:      #f3f7fc;   /* фон чередующихся секций */
+  --c-border:      #e3eaf3;   /* границы/разделители */
+  --c-card:        #ffffff;
+
+  --radius:        16px;
+  --radius-sm:     10px;
+  --shadow:        0 10px 30px rgba(20, 40, 74, .08);
+  --shadow-lg:     0 18px 50px rgba(20, 40, 74, .14);
+
+  --container:     1180px;    /* потолок ширины контента на десктопе */
+  --container-pad: 16px;      /* боковые поля (ступенчато растут на планшете) */
+  --header-h:      64px;      /* высота хедера (ступенчато растёт по тирам) */
+
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --------------------------------- Сброс --------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+
+/* Блокировка прокрутки страницы, когда открыто мобильное меню (класс вешает JS) */
+html.nav-lock { overflow: hidden; }
+/* Хедер на это время становится fixed (уходит из потока) — компенсируем его высоту
+   отступом у body, иначе контент под хедером подпрыгивает вверх при открытии меню */
+html.nav-lock body { padding-top: var(--header-h); }
+
+body {
+  font-family: var(--font);
+  color: var(--c-text);
+  background: var(--c-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--c-navy); }
+
+.icon { width: 24px; height: 24px; fill: none; }
+
+/* Контейнер: резиновый с потолком 1180 + боковые поля по тиру */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Скрытая ссылка для доступности (видна только при фокусе с клавиатуры) */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--c-navy); color: #fff; padding: 10px 16px; border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Якорь не должен прятаться под липким хедером (впритык, без зазора —
+   иначе при переходе к #about видна полоска тёмного хиро над секцией) */
+section[id] { scroll-margin-top: var(--header-h); }
+
+/* --------------------------------- Кнопки --------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 14px 26px; border-radius: 999px;
+  font-weight: 700; font-size: 15px; letter-spacing: .01em;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  white-space: nowrap;
+}
+.btn--primary { background: var(--grad-brand); color: #fff; box-shadow: 0 8px 20px rgba(43, 90, 158, .35); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(43, 90, 158, .45); }
+.btn--ghost { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
+.btn--ghost:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ============================================================
+   ХЕДЕР — база (мобайл/планшет): меню в бургере (выпадающая панель)
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+/* При прокрутке хедер становится непрозрачным, чтобы тёмный хиро не просвечивал под ним */
+.header.is-scrolled { background: #fff; box-shadow: 0 6px 24px rgba(20,40,74,.08); border-bottom-color: var(--c-border); }
+/* При открытом меню фиксируем хедер у верха экрана: overflow:hidden (блокировка
+   прокрутки) ломает sticky, а так крестик закрытия всегда остаётся виден.
+   Фон делаем непрозрачным, чтобы под полупрозрачным хедером ничего не просвечивало. */
+.header.nav-open { position: fixed; top: 0; left: 0; right: 0; background: #fff; }
+
+.header__inner { display: flex; align-items: center; gap: 10px; height: var(--header-h); }
+.logo { flex-shrink: 0; }
+.logo__img { height: 40px; width: auto; }
+
+/* Навигация-выпадашка (мобайл/планшет) */
+.nav {
+  position: fixed; top: var(--header-h); left: 0; right: 0;
+  background: #fff; border-bottom: 1px solid var(--c-border);
+  box-shadow: var(--shadow-lg);
+  height: 0; overflow: hidden; transition: height .3s ease;
+}
+/* Открытое меню занимает всю видимую высоту экрана (минус хедер) */
+.header.nav-open .nav {
+  height: calc(100vh - var(--header-h));   /* фолбэк */
+  height: calc(100dvh - var(--header-h));
+  overflow: auto;
+}
+.nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; min-height: 100%; }
+.nav__link {
+  position: relative; display: block; padding: 14px 20px;
+  font-size: 16px; font-weight: 600; color: var(--c-text); transition: color .2s ease;
+}
+.nav__link:hover { color: var(--c-blue); }
+.nav__phone { display: block; border-top: 1px solid var(--c-border); margin-top: auto; }
+.nav__phone .nav__link { color: var(--c-blue); font-weight: 800; }
+
+.header__actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.header__phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--c-navy); white-space: nowrap; }
+.header__phone .icon { width: 20px; height: 20px; color: var(--c-blue); flex-shrink: 0; }
+.header__phone:hover { color: var(--c-blue); }
+.header__phone-num { display: none; } /* на мобайле в хедере только иконка телефона */
+
+/* Переключатель языка */
+.lang-switch {
+  display: inline-flex; align-items: center;
+  border-radius: 999px; overflow: hidden;
+  /* обводка как inset-тень: активная кнопка перекрывает её градиентом со своей
+     стороны (заливка доходит до края), у неактивной обводка остаётся */
+  box-shadow: inset 0 0 0 1.5px var(--c-border);
+}
+.lang-switch__btn {
+  padding: 5px 9px; font-size: 12px; font-weight: 700; color: var(--c-muted);
+  transition: background .2s ease, color .2s ease;
+}
+.lang-switch__btn.is-active { background: var(--grad-brand); color: #fff; }
+
+/* Бургер (виден на мобайле/планшете) */
+.burger { display: block; width: 44px; height: 44px; position: relative; flex-shrink: 0; }
+.burger span {
+  position: absolute; left: 10px; right: 10px; height: 2.4px; border-radius: 2px;
+  background: var(--c-navy); transition: transform .25s ease, opacity .2s ease, top .25s ease;
+}
+.burger span:nth-child(1) { top: 15px; }
+.burger span:nth-child(2) { top: 21px; }
+.burger span:nth-child(3) { top: 27px; }
+.header.nav-open .burger span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.header.nav-open .burger span:nth-child(2) { opacity: 0; }
+.header.nav-open .burger span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* ============================================================
+   ХИРО — база (мобайл)
+   ============================================================ */
+.hero {
+  position: relative; color: #fff;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: calc(100vh - var(--header-h));   /* фолбэк */
+  min-height: calc(100dvh - var(--header-h));  /* реально видимая высота */
+  background: var(--grad-brand);
+  padding: 40px 0 72px;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; opacity: .5;
+  background:
+    radial-gradient(900px 400px at 85% -10%, rgba(120,170,235,.35), transparent 60%),
+    radial-gradient(700px 500px at 0% 110%, rgba(10,22,45,.6), transparent 55%);
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; opacity: .08;
+  background-image: repeating-linear-gradient(115deg, #fff 0 2px, transparent 2px 46px);
+}
+.hero__inner { position: relative; z-index: 1; max-width: 820px; }
+.hero__eyebrow {
+  text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 700;
+  color: #aecbf2; margin-bottom: 16px;
+}
+.hero__title { color: #fff; font-size: 30px; letter-spacing: -.01em; margin-bottom: 18px; }
+.hero__subtitle { font-size: 16px; color: #dbe7f6; max-width: 640px; margin-bottom: 30px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Индикатор «прокрутите вниз» (ссылка на следующую секцию) */
+.hero__scroll {
+  position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+  z-index: 2; width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  border: 1.5px solid rgba(255,255,255,.5); background: rgba(255,255,255,.08);
+  animation: scrollHint 1.8s ease-in-out infinite;
+  transition: background .2s ease, border-color .2s ease;
+}
+.hero__scroll:hover { background: rgba(255,255,255,.2); border-color: #fff; }
+.hero__scroll .icon { width: 24px; height: 24px; }
+
+@keyframes scrollHint {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 7px); }
+}
+
+/* На низких экранах (ландшафт телефона) индикатор прячем, чтобы не мешал */
+@media (max-height: 560px) {
+  .hero__scroll { display: none; }
+}
+
+/* ============================================================
+   СЕКЦИИ — база (мобайл)
+   ============================================================ */
+.section { padding: 56px 0; }
+.section--alt { background: var(--c-bg-alt); }
+
+.section__head { max-width: 720px; margin-bottom: 36px; }
+.kicker {
+  display: inline-block; text-transform: uppercase; letter-spacing: .16em;
+  font-size: 12.5px; font-weight: 800; color: var(--c-blue); margin-bottom: 12px;
+}
+.section__title { font-size: 26px; }
+.section__lead { margin-top: 14px; font-size: 16px; color: var(--c-muted); }
+
+/* О компании */
+.about__grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+.about__text p { color: var(--c-muted); font-size: 16px; margin-bottom: 16px; }
+.about__highlights { display: grid; gap: 14px; }
+.about__highlights li {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius-sm);
+  padding: 16px 18px; box-shadow: var(--shadow); font-weight: 600;
+}
+.about__highlights .icon { width: 22px; height: 22px; color: var(--c-blue); flex-shrink: 0; margin-top: 1px; }
+
+/* Карточки грузов */
+.cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.card {
+  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.card__media { height: 190px; display: flex; align-items: center; justify-content: center; color: #fff; }
+.card__media--a { background: linear-gradient(135deg, #2a3447, #4a5568); }   /* уголь */
+.card__media--b { background: linear-gradient(135deg, #35527e, #2b5a9e); }   /* металл */
+.card__media--c { background: linear-gradient(135deg, #3d6fb5, #6a8fc4); }   /* ферросплавы */
+.card__icon { width: 64px; height: 64px; opacity: .92; }
+.card__body { padding: 24px; }
+.card__title { font-size: 20px; margin-bottom: 10px; }
+.card__text { color: var(--c-muted); font-size: 15.5px; }
+
+/* География */
+.geo { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
+.geo__map {
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  background: #fff; box-shadow: var(--shadow); padding: 12px; overflow: auto;
+}
+.geo__img { width: 100%; height: auto; min-width: 480px; margin: 0 auto; }
+.geo__modes { display: grid; gap: 18px; }
+.geo__mode { display: flex; gap: 16px; align-items: flex-start; }
+.geo__mode-ic {
+  flex-shrink: 0; width: 50px; height: 50px; border-radius: 12px;
+  display: grid; place-items: center; color: #fff; background: var(--grad-brand);
+}
+.geo__mode-ic .icon { width: 26px; height: 26px; }
+.geo__mode-title { display: block; font-weight: 800; color: var(--c-navy); margin-bottom: 3px; }
+.geo__mode-desc { display: block; color: var(--c-muted); font-size: 15px; }
+
+/* Преимущества */
+.features { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.feature {
+  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius);
+  padding: 24px; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.feature__icon {
+  width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+  background: rgba(43, 90, 158, .1); color: var(--c-blue); margin-bottom: 16px;
+}
+.feature__icon .icon { width: 28px; height: 28px; }
+.feature__title { font-size: 19px; margin-bottom: 8px; }
+.feature__text { color: var(--c-muted); font-size: 15.5px; }
+
+/* Партнёры */
+.partners { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.partners__item {
+  height: 84px; display: grid; place-items: center;
+  border: 1px dashed var(--c-border); border-radius: var(--radius-sm);
+  background: #fff; color: #aab6c8; font-weight: 700; font-size: 14px;
+  transition: border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.partners__item:hover { border-color: var(--c-blue-light); color: var(--c-blue); transform: translateY(-3px); }
+
+/* Контакты */
+.section--contacts .section__head { margin-left: auto; margin-right: auto; text-align: center; }
+.contacts { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 780px; margin: 0 auto; }
+.contact-card {
+  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius);
+  padding: 26px 18px; text-align: center; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--c-blue-light); }
+.contact-card__ic {
+  width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--grad-brand); color: #fff; margin-bottom: 6px;
+}
+.contact-card__label { font-size: 13px; color: var(--c-muted); text-transform: uppercase; letter-spacing: .08em; }
+.contact-card__value { font-weight: 700; color: var(--c-navy); font-size: 15.5px; word-break: break-word; }
+
+/* ============================================================
+   ФУТЕР — база (мобайл): одна колонка
+   ============================================================ */
+.footer { background: var(--c-navy); color: #c4d2e6; }
+.footer__inner {
+  display: grid; grid-template-columns: 1fr; gap: 30px;
+  padding: 44px var(--container-pad) 32px;
+}
+.footer__logo { height: 42px; width: auto; margin-bottom: 18px; filter: brightness(0) invert(1); opacity: .95; }
+.footer__desc { font-size: 15px; max-width: 360px; margin-bottom: 20px; }
+.footer__social { display: flex; gap: 12px; }
+.footer__social a {
+  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(255,255,255,.08); color: #fff; transition: background .2s ease, transform .2s ease;
+}
+.footer__social a:hover { background: var(--c-blue); transform: translateY(-3px); }
+.footer__title { color: #fff; font-size: 16px; margin-bottom: 18px; }
+.footer__list { display: grid; gap: 10px; }
+.footer__list a, .footer__list span { font-size: 15px; color: #c4d2e6; transition: color .2s ease; }
+.footer__list a:hover { color: #fff; }
+
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.1); }
+.footer__bottom-inner {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 20px var(--container-pad); font-size: 13.5px; color: #8ea3c0;
+}
+
+/* Кнопка «наверх» */
+.to-top {
+  position: fixed; right: 18px; bottom: 18px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-lg);
+  display: grid; place-items: center;
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover { transform: translateY(-3px); }
+
+/* ============================== АНИМАЦИИ ============================== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero__scroll { animation: none; }
+}
+
+/* ============================================================
+   ПЛАНШЕТ — от 768px
+   ============================================================ */
+@media (min-width: 768px) {
+  :root { --header-h: 72px; --container-pad: 24px; }
+
+  .header__inner { gap: 24px; }
+  .header__actions { gap: 16px; }
+  .header__phone-num { display: inline; } /* появляется номер телефона рядом с иконкой */
+  .lang-switch__btn { padding: 7px 12px; font-size: 13px; } /* возвращаем комфортный размер */
+
+  .hero { padding: 88px 0 104px; }
+  .hero__eyebrow { font-size: 13px; margin-bottom: 18px; }
+  .hero__title { font-size: 42px; margin-bottom: 20px; }
+  .hero__subtitle { font-size: 18px; margin-bottom: 34px; }
+
+  .section { padding: 72px 0; }
+  .section__head { margin-bottom: 44px; }
+  .section__title { font-size: 32px; }
+  .section__lead { font-size: 17px; }
+
+  .cards, .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .partners { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .contacts { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; padding: 52px 24px 40px; }
+  .footer__bottom-inner { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
+}
+
+/* ============================================================
+   ДЕСКТОП — от 1200px (полное меню + многоколоночные секции)
+   ============================================================ */
+@media (min-width: 1200px) {
+  :root { --header-h: 76px; }
+
+  /* Стеклянный эффект возвращаем на десктопе (меню тут статичное, fixed не нужен) */
+  .header { backdrop-filter: saturate(160%) blur(10px); }
+  .header.nav-open { position: sticky; } /* страховка: на десктопе хедер не фиксируем */
+  html.nav-lock body { padding-top: 0; } /* …и компенсацию отступа здесь не применяем */
+  .logo__img { height: 44px; }
+  .nav { margin-left: 28px; } /* чуть больше отступ меню от логотипа */
+
+  /* Меню — горизонтальное, бургер скрыт */
+  .nav {
+    position: static; height: auto; overflow: visible;
+    background: none; border: 0; box-shadow: none;
+  }
+  .nav__list { flex-direction: row; align-items: center; gap: 26px; padding: 0; min-height: 0; }
+  .nav__link { display: inline; padding: 0; font-size: 15px; font-weight: 600; }
+  .nav__link::after {
+    content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+    background: var(--c-blue); transition: width .2s ease;
+  }
+  .nav__link:hover::after { width: 100%; }
+  .nav__phone { display: none; }
+  .burger { display: none; }
+
+  .hero { padding: 104px 0 120px; }
+  .hero__title { font-size: 56px; }
+  .hero__subtitle { font-size: 20px; }
+
+  .section { padding: 96px 0; }
+  .section__head { margin-bottom: 48px; }
+  .section__title { font-size: 40px; }
+
+  .about__grid { grid-template-columns: 1.6fr 1fr; gap: 48px; }
+  .about__text p { font-size: 17px; }
+  .cards { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .geo { grid-template-columns: 1.5fr 1fr; gap: 40px; }
+  .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature { padding: 28px; }
+  .partners { grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .contacts { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  .footer__inner { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding: 60px 20px 44px; }
+
+  .to-top { right: 22px; bottom: 22px; }
+}
