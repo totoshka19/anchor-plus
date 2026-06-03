@@ -97,13 +97,13 @@
     "contacts.phoneLabel": "Phone",
     "contacts.emailLabel": "Email",
     "contacts.addressLabel": "Address",
-    "contacts.addressValue": "Moscow, Primernaya St., 1",
+    "contacts.addressValue": "123112, Moscow, Presnenskaya nab. 12, office 15/27",
 
     "footer.desc": "Freight forwarding company. International transportation of coal, metal products and ferroalloys.",
     "footer.navTitle": "Navigation",
     "footer.contactsTitle": "Contacts",
-    "footer.copy": "ANCHOR PLUS. All rights reserved.",
-    "footer.legal": "TIN 0000000000 · PSRN 0000000000000"
+    "footer.copy": "JSC \"ANCHOR PLUS\". All rights reserved.",
+    "footer.legal": "TIN 7720853862 · PSRN 1217700412731"
   };
 
   /* --------------------------- Движок (общий) --------------------------- */
