@@ -36,7 +36,6 @@
     "hero.title": "International shipping of coal, metal and ferroalloys",
     "hero.subtitle": "We deliver cargo by rail and multimodal routes from Russia via Kazakhstan to Asian countries — from the extraction site to the destination port.",
     "hero.cta1": "Get in touch",
-    "hero.cta2": "What we ship",
     "hero.scroll": "Scroll down",
 
     "about.kicker": "About us",
