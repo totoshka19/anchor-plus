@@ -33,13 +33,13 @@
     "nav.contacts": "Contacts",
 
     "hero.eyebrow": "Freight forwarding company",
-    "hero.title": "International shipping of coal, metal and ferroalloys",
-    "hero.subtitle": "We deliver cargo by rail and multimodal routes from Russia via Kazakhstan to Asian countries — from the extraction site to the destination port.",
-    "hero.cta1": "Get in touch",
+    "hero.title": "Transportation of industrial and raw materials",
+    "hero.subtitle": "Railway, road, and multimodal transportation of coal, metal, grain, petrochemical products, and other cargo across Russia, Kazakhstan, and international destinations",
+    "hero.cta1": "Contact us",
     "hero.scroll": "Scroll down",
 
     "about.kicker": "About us",
-    "about.title": "A reliable partner in international logistics",
+    "about.title": "Reliable partner in industrial logistics",
     "about.p1": "ANCHOR PLUS is a freight forwarding company specializing in international transportation of bulk and metallurgical cargo. We arrange delivery of coal, metal products and ferroalloys from Russia via Kazakhstan to Asian countries.",
     "about.p2": "We build logistics around the client's needs: from picking up cargo at the extraction site by road to rail transportation and transshipment at sea ports. We handle the entire route and keep the cargo under control at every stage.",
     "about.hl1": "International rail transportation",
