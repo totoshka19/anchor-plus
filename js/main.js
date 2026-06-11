@@ -13,7 +13,6 @@
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* --- Мобильное меню (бургер) --- */
-  // Открытие/закрытие меню + блокировка прокрутки страницы под ним
   function setNav(open) {
     header.classList.toggle("nav-open", open);
     document.documentElement.classList.toggle("nav-lock", open); // overflow:hidden на <html>
@@ -24,11 +23,9 @@
   if (burger) {
     burger.addEventListener("click", () => setNav(!header.classList.contains("nav-open")));
   }
-  // Клик по пункту меню закрывает его
   document.querySelectorAll(".nav__link").forEach((link) => {
     link.addEventListener("click", closeNav);
   });
-  // Esc закрывает меню
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && header.classList.contains("nav-open")) closeNav();
   });
@@ -39,7 +36,7 @@
 
   /* --- Тень у хедера + кнопка «наверх» по скроллу --- */
   function onScroll() {
-    const y = window.pageYOffset || document.documentElement.scrollTop;
+    const y = window.scrollY;
     header.classList.toggle("is-scrolled", y > 8);
     if (toTop) toTop.classList.toggle("is-visible", y > 500);
   }
@@ -64,13 +61,11 @@
 
     reveals.forEach((el) => io.observe(el));
 
-    // Если страница открылась уже прокрученной (перезагрузка или ссылка на #якорь),
-    // сразу показываем всё, что в зоне видимости или выше неё — чтобы контент
-    // над текущим экраном не оставался скрытым. Блоки ниже по-прежнему анимируются.
-    // Используем событие load (а не requestAnimationFrame): оно срабатывает даже
-    // в фоновой вкладке и уже после восстановления позиции прокрутки.
+    // Страница могла открыться уже прокрученной (перезагрузка, #якорь) — показываем
+    // всё выше текущего экрана. Именно load: срабатывает и в фоновой вкладке,
+    // и после восстановления позиции прокрутки.
     function revealAboveFold() {
-      if (!window.pageYOffset) return;
+      if (!window.scrollY) return;
       reveals.forEach((el) => {
         if (el.getBoundingClientRect().top < window.innerHeight) {
           el.classList.add("is-visible");

@@ -1,16 +1,8 @@
 /* =========================================================================
    Переключение языка RU <-> EN без зависимостей.
-
-   Как это работает:
-   1. Русский текст — прямо в index.html (он же контент по умолчанию).
-   2. На загрузке скрипт находит все элементы с атрибутами data-i18n*
-      и СНИМАЕТ из них русские строки -> это словарь RU.
-   3. Английский словарь (EN) задан ниже вручную.
-   4. Кнопка RU/EN подменяет текст/атрибуты и запоминает выбор в localStorage.
-
-   Чтобы поправить английский перевод — редактируйте объект EN ниже.
-   Чтобы добавить новую переводимую строку — повесьте в HTML атрибут
-   data-i18n="мой.ключ" и добавьте 'мой.ключ' в EN.
+   Русский текст живёт в index.html: на загрузке он снимается в словарь RU,
+   словарь EN задан ниже вручную, выбор языка хранится в localStorage.
+   Новая строка: атрибут data-i18n="ключ" в HTML + перевод с тем же ключом в EN.
    ========================================================================= */
 (() => {
   "use strict";
@@ -33,16 +25,16 @@
     "nav.contacts": "Contacts",
 
     "hero.eyebrow": "Freight forwarding company",
-    "hero.title": "Transportation of industrial and raw materials",
+    "hero.title": "Transportation of industrial and raw material cargo",
     "hero.subtitle": "Railway, road, and multimodal transportation of coal, metal, grain, petrochemical products, and other cargo across Russia, Kazakhstan, and international destinations",
     "hero.cta1": "Contact us",
     "hero.scroll": "Scroll down",
 
     "about.kicker": "About us",
     "about.title": "Reliable partner in industrial logistics",
-    "about.p1": "ANCHOR PLUS is a freight forwarding company specializing in the organization of bulk, general, container, and raw material cargo. We work with enterprises in the mining, metallurgical, agricultural, petrochemical, and manufacturing industries.",
+    "about.p1": "ANCHOR\u00A0PLUS is a freight forwarding company specializing in the organization of bulk, general, container, and raw material cargo. We work with enterprises in the mining, metallurgical, agricultural, petrochemical, and manufacturing industries.",
     "about.p2": "We build logistics around the client's needs: from picking up cargo at the extraction site by road to rail transportation and transshipment at sea ports. We handle the entire route and keep the cargo under control at every stage.",
-    "about.p3": "We transport industrial and raw materials across Russia, Kazakhstan, and international destinations",
+    "about.p3": "We transport industrial and raw material cargo across Russia, Kazakhstan, and international destinations",
     "about.p4": "Our services include railway, road, and multimodal transportation of coal, metal, grain, petrochemical products, and other cargo.",
     "about.p5": "Full-service support covers route selection, transport and rolling stock coordination, document preparation, participant management, and cargo tracking to the destination.",
     "about.hl1": "International and domestic transportation",
@@ -112,7 +104,7 @@
     "footer.desc": "Freight forwarding company. International transportation of coal, metal products and ferroalloys.",
     "footer.navTitle": "Navigation",
     "footer.contactsTitle": "Contacts",
-    "footer.copy": "JSC \"ANCHOR PLUS\". All rights reserved.",
+    "footer.copy": "JSC ANCHOR\u00A0PLUS. All rights reserved.",
     "footer.legal": "TIN 7720853862 · PSRN 1217700412731"
   };
 
@@ -136,7 +128,6 @@
         const key = attrNode.value;
 
         targets.push({ el, attr, key });
-        // RU = то, что уже стоит в разметке
         DICT.ru[key] = attr === null ? el.textContent : el.getAttribute(attr);
       }
     });

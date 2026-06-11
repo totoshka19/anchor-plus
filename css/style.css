@@ -1,10 +1,7 @@
 /* =========================================================================
-   АНКОР ПЛЮС — стили лендинга
-   Подход: MOBILE-FIRST по брейкпоинтам.
-     • База (без медиазапросов) — мобайл, рассчитан на ширину от 375px.
-     • @media (min-width: 768px)  — планшет.
-     • @media (min-width: 1200px) — десктоп.
-   Палитра и ключевые величины — в :root (меняются в одном месте).
+   АНКОР ПЛЮС — стили лендинга.
+   Mobile-first: база — мобайл (от 375px), @media 768px — планшет, 1200px — десктоп.
+   Палитра и ключевые величины — в :root.
    ========================================================================= */
 
 :root {
@@ -39,10 +36,9 @@
 
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
-/* Блокировка прокрутки страницы, когда открыто мобильное меню (класс вешает JS) */
+/* Блокировка прокрутки при открытом мобильном меню (класс вешает JS) */
 html.nav-lock { overflow: hidden; }
-/* Хедер на это время становится fixed (уходит из потока) — компенсируем его высоту
-   отступом у body, иначе контент под хедером подпрыгивает вверх при открытии меню */
+/* компенсация высоты хедера: он в этот момент fixed и уходит из потока */
 html.nav-lock body { padding-top: var(--header-h); }
 
 body {
@@ -77,8 +73,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--c-navy); }
 }
 .skip-link:focus { left: 0; }
 
-/* Якорь не должен прятаться под липким хедером (впритык, без зазора —
-   иначе при переходе к #about видна полоска тёмного хиро над секцией) */
+/* якоря не прячутся под липким хедером; впритык — иначе над секцией полоска хиро */
 section[id] { scroll-margin-top: var(--header-h); }
 
 /* --------------------------------- Кнопки --------------------------------- */
@@ -103,11 +98,9 @@ section[id] { scroll-margin-top: var(--header-h); }
   border-bottom: 1px solid transparent;
   transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
 }
-/* При прокрутке хедер становится непрозрачным, чтобы тёмный хиро не просвечивал под ним */
+/* при прокрутке фон непрозрачный — тёмный хиро не просвечивает */
 .header.is-scrolled { background: #fff; box-shadow: 0 6px 24px rgba(20,40,74,.08); border-bottom-color: var(--c-border); }
-/* При открытом меню фиксируем хедер у верха экрана: overflow:hidden (блокировка
-   прокрутки) ломает sticky, а так крестик закрытия всегда остаётся виден.
-   Фон делаем непрозрачным, чтобы под полупрозрачным хедером ничего не просвечивало. */
+/* при открытом меню хедер fixed: overflow:hidden у html ломает sticky */
 .header.nav-open { position: fixed; top: 0; left: 0; right: 0; background: #fff; }
 
 .header__inner { display: flex; align-items: center; gap: 10px; height: var(--header-h); }
@@ -119,13 +112,16 @@ section[id] { scroll-margin-top: var(--header-h); }
   position: fixed; top: var(--header-h); left: 0; right: 0;
   background: #fff; border-bottom: 1px solid var(--c-border);
   box-shadow: var(--shadow-lg);
-  height: 0; overflow: hidden; transition: height .3s ease;
+  height: 0; overflow: hidden;
+  /* visibility убирает ссылки закрытого меню из Tab-обхода; меняется в конце анимации */
+  visibility: hidden;
+  transition: height .3s ease, visibility .3s;
 }
-/* Открытое меню занимает всю видимую высоту экрана (минус хедер) */
 .header.nav-open .nav {
   height: calc(100vh - var(--header-h));   /* фолбэк */
   height: calc(100dvh - var(--header-h));
   overflow: auto;
+  visibility: visible;
 }
 .nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; min-height: 100%; }
 .nav__link {
@@ -146,8 +142,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .lang-switch {
   display: inline-flex; align-items: center;
   border-radius: 999px; overflow: hidden;
-  /* обводка как inset-тень: активная кнопка перекрывает её градиентом со своей
-     стороны (заливка доходит до края), у неактивной обводка остаётся */
+  /* обводка inset-тенью: активная кнопка перекрывает её своим градиентом */
   box-shadow: inset 0 0 0 1.5px var(--c-border);
 }
 .lang-switch__btn {
@@ -177,17 +172,14 @@ section[id] { scroll-margin-top: var(--header-h); }
   display: flex; flex-direction: column; justify-content: center;
   min-height: calc(100vh - var(--header-h));   /* фолбэк */
   min-height: calc(100dvh - var(--header-h));  /* реально видимая высота */
-  /* Фоновое фото грузового состава (заменило прежний синий градиент с линиями).
-     navy — фолбэк-цвет: виден, пока фото грузится или если файла нет. */
+  /* navy — фолбэк: виден, пока фото грузится или если файла нет */
   background: var(--c-navy) url("../img/hero.jpg") center right / cover no-repeat;
   padding: 40px 0 72px;
   overflow: hidden;
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  /* Затемняющая «вуаль» поверх фото: слева темнее — под левый белый текст (читаемость),
-     снизу — мягкий градиент, чтобы заземлить секцию и стрелку прокрутки.
-     Справа фото остаётся светлее — рассветное небо просвечивает. */
+  /* затемнение фото: слева сильнее — под белый текст, снизу — под стрелку прокрутки */
   background:
     linear-gradient(90deg, rgba(11,20,38,.90) 0%, rgba(11,20,38,.60) 45%, rgba(11,20,38,.24) 100%),
     linear-gradient(to top, rgba(11,20,38,.62) 0%, transparent 42%);
@@ -283,6 +275,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   color: var(--c-text);
   margin: 0;
   padding: 24px 24px 0;
+  text-wrap: balance; /* строки равной длины при переносе */
 }
 
 /* Карточки грузов */
@@ -292,8 +285,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
 }
 .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-/* Медиа карточки — теперь настоящее фото: заполняет область без искажения (cover),
-   фон-заглушка виден, пока картинка грузится (секция лениво-загружаемая, ниже сгиба) */
+/* фон-заглушка виден, пока грузится lazy-фото */
 .card__media {
   width: 100%; height: 190px;
   object-fit: cover; object-position: center;
@@ -317,9 +309,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   display: grid; place-items: center; color: #fff; background: var(--grad-brand);
 }
 .geo__mode-ic .icon { width: 26px; height: 26px; }
-/* line-height наследовался 1.6 от body → над заглавной буквой ~8px «воздуха»,
-   и текст опускался ниже верха иконки. Поджимаем line-height и снимаем остаток
-   шрифтового асцента (-5px), чтобы верх текста совпал с верхом иконки. */
+/* поджатый line-height и -5px снимают шрифтовой асцент: верх текста вровень с иконкой */
 .geo__mode-title { display: block; font-weight: 800; color: var(--c-navy); margin-bottom: 3px; line-height: 1.2; margin-top: -5px; }
 .geo__mode-desc { display: block; color: var(--c-muted); font-size: 15px; }
 
@@ -375,12 +365,6 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
 }
 .footer__logo { height: 42px; width: auto; margin-bottom: 18px; filter: brightness(0) invert(1); opacity: .95; }
 .footer__desc { font-size: 15px; max-width: 360px; margin-bottom: 20px; }
-.footer__social { display: flex; gap: 12px; }
-.footer__social a {
-  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
-  background: rgba(255,255,255,.08); color: #fff; transition: background .2s ease, transform .2s ease;
-}
-.footer__social a:hover { background: var(--c-blue); transform: translateY(-3px); }
 .footer__title { color: #fff; font-size: 16px; margin-bottom: 18px; }
 .footer__list { display: grid; gap: 10px; }
 .footer__list a, .footer__list span { font-size: 15px; color: #c4d2e6; transition: color .2s ease; }
@@ -422,8 +406,8 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
 
   .header__inner { gap: 24px; }
   .header__actions { gap: 16px; }
-  .header__phone-num { display: inline; } /* появляется номер телефона рядом с иконкой */
-  .lang-switch__btn { padding: 7px 12px; font-size: 13px; } /* возвращаем комфортный размер */
+  .header__phone-num { display: inline; }
+  .lang-switch__btn { padding: 7px 12px; font-size: 13px; }
 
   .hero { padding: 88px 0 104px; }
   .hero__eyebrow { font-size: 13px; margin-bottom: 18px; }
@@ -439,10 +423,12 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   }
   .about__cta .btn.btn--primary {
     border-radius: 0 50px 50px 0;
+    width: auto;          /* отменяем мобильную width:100% */
+    align-self: stretch;  /* кнопка закрывает правый торец пилюли по всей высоте */
   }
+  /* без nowrap: текст переносится, иначе на 768–880px пилюля шире контейнера */
   .about__cta-text {
-    padding: 0 0 0 24px;
-    white-space: nowrap;
+    padding: 12px 0 12px 24px;
   }
   .section__lead { font-size: 17px; }
 
@@ -450,7 +436,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .partners { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .contacts { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-  .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; padding: 52px 24px 40px; }
+  .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; padding: 52px var(--container-pad) 40px; }
   .footer__bottom-inner { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
 }
 
@@ -460,16 +446,16 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
 @media (min-width: 1200px) {
   :root { --header-h: 76px; }
 
-  /* Стеклянный эффект возвращаем на десктопе (меню тут статичное, fixed не нужен) */
   .header { backdrop-filter: saturate(160%) blur(10px); }
   .header.nav-open { position: sticky; } /* страховка: на десктопе хедер не фиксируем */
   html.nav-lock body { padding-top: 0; } /* …и компенсацию отступа здесь не применяем */
   .logo__img { height: 44px; }
-  .nav { margin-left: 28px; } /* чуть больше отступ меню от логотипа */
+  .nav { margin-left: 28px; }
 
   /* Меню — горизонтальное, бургер скрыт */
   .nav {
     position: static; height: auto; overflow: visible;
+    visibility: visible; /* отменяем мобильное hidden, иначе меню исчезнет */
     background: none; border: 0; box-shadow: none;
   }
   .nav__list { flex-direction: row; align-items: center; gap: 26px; padding: 0; min-height: 0; }
@@ -506,7 +492,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .partners { grid-template-columns: repeat(6, 1fr); gap: 18px; }
   .contacts { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-  .footer__inner { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding: 60px 20px 44px; }
+  .footer__inner { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding: 60px var(--container-pad) 44px; }
 
   .to-top { right: 22px; bottom: 22px; }
 }
