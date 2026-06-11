@@ -236,37 +236,38 @@
             <li data-i18n="geo.dir6">Внутрироссийские промышленные направления</li>
           </ul>
         </div>
-        <div class="geo">
-          <div class="geo__map reveal">
-            <!-- Карта своя для каждого языка: подписи на ней должны совпадать с языком сайта -->
-            <img src="img/map-ru.svg" data-i18n-src="geo.map"
-                 alt="Схема направлений перевозок: Россия, Казахстан, страны СНГ, морские порты, Китай и страны Азии"
-                 data-i18n-alt="geo.mapAlt" class="geo__img">
-          </div>
-          <ul class="geo__modes reveal">
-            <li class="geo__mode">
-              <span class="geo__mode-ic"><svg class="icon"><use href="#i-truck"/></svg></span>
-              <span class="geo__mode-txt">
-                <span class="geo__mode-title" data-i18n="geo.road">Автотранспорт</span>
-                <span class="geo__mode-desc" data-i18n="geo.roadDesc">Вывоз груза с&nbsp;места производства, добычи или&nbsp;хранения и&nbsp;доставка до&nbsp;станции или&nbsp;терминала</span>
-              </span>
-            </li>
-            <li class="geo__mode">
-              <span class="geo__mode-ic"><svg class="icon"><use href="#i-train"/></svg></span>
-              <span class="geo__mode-txt">
-                <span class="geo__mode-title" data-i18n="geo.rail">Железная дорога</span>
-                <span class="geo__mode-desc" data-i18n="geo.railDesc">Основа маршрутов: перевозки по&nbsp;железнодорожной сети России, Казахстана и&nbsp;стран СНГ</span>
-              </span>
-            </li>
-            <li class="geo__mode">
-              <span class="geo__mode-ic"><svg class="icon"><use href="#i-ship"/></svg></span>
-              <span class="geo__mode-txt">
-                <span class="geo__mode-title" data-i18n="geo.sea">Морская перевалка</span>
-                <span class="geo__mode-desc" data-i18n="geo.seaDesc">Перевалка в&nbsp;морских портах и&nbsp;экспортные отправки в&nbsp;Китай и&nbsp;страны Азии</span>
-              </span>
-            </li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="geo__map reveal">
+        <img src="img/map-ru-solid.svg?v=2" data-i18n-src="geo.map"
+             alt="Карта направлений перевозок: Россия, Казахстан, страны СНГ, морские порты, Китай и страны Азии"
+             data-i18n-alt="geo.mapAlt" class="geo__img" width="1600" height="830" loading="lazy">
+      </div>
+
+      <div class="container">
+        <ul class="geo__modes reveal">
+          <li class="geo__mode">
+            <span class="geo__mode-ic"><svg class="icon"><use href="#i-truck"/></svg></span>
+            <span class="geo__mode-txt">
+              <span class="geo__mode-title" data-i18n="geo.road">Автотранспорт</span>
+              <span class="geo__mode-desc" data-i18n="geo.roadDesc">Вывоз груза с&nbsp;места производства, добычи или&nbsp;хранения и&nbsp;доставка до&nbsp;станции или&nbsp;терминала</span>
+            </span>
+          </li>
+          <li class="geo__mode">
+            <span class="geo__mode-ic"><svg class="icon"><use href="#i-train"/></svg></span>
+            <span class="geo__mode-txt">
+              <span class="geo__mode-title" data-i18n="geo.rail">Железная дорога</span>
+              <span class="geo__mode-desc" data-i18n="geo.railDesc">Основа маршрутов: перевозки по&nbsp;железнодорожной сети России, Казахстана и&nbsp;стран СНГ</span>
+            </span>
+          </li>
+          <li class="geo__mode">
+            <span class="geo__mode-ic"><svg class="icon"><use href="#i-ship"/></svg></span>
+            <span class="geo__mode-txt">
+              <span class="geo__mode-title" data-i18n="geo.sea">Морская перевалка</span>
+              <span class="geo__mode-desc" data-i18n="geo.seaDesc">Перевалка в&nbsp;морских портах и&nbsp;экспортные отправки в&nbsp;Китай и&nbsp;страны Азии</span>
+            </span>
+          </li>
+        </ul>
       </div>
     </section>
 

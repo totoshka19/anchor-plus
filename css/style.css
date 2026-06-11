@@ -360,12 +360,14 @@ section[id] { scroll-margin-top: var(--header-h); }
   padding: 9px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--c-navy);
   background: var(--c-card); border: 1px solid var(--c-border); box-shadow: var(--shadow);
 }
-.geo { display: grid; grid-template-columns: 1fr; gap: 28px; }
+/* Карта — лента на всю ширину экрана (блок вынесен из .container).
+   На мобайле широкую карту листают по горизонтали, с планшета она целиком в экране. */
 .geo__map {
-  border: 1px solid var(--c-border); border-radius: var(--radius);
-  background: #fff; box-shadow: var(--shadow); padding: 12px; overflow: auto;
+  background: linear-gradient(180deg, var(--c-bg) 0%, var(--c-bg-alt) 22%, var(--c-bg-alt) 78%, var(--c-bg) 100%);
+  overflow-x: auto;
+  margin-bottom: 36px;
 }
-.geo__img { width: 100%; height: auto; min-width: 480px; margin: 0 auto; }
+.geo__img { width: 100%; min-width: 720px; height: auto; margin: 0 auto; }
 .geo__modes { display: grid; gap: 18px; }
 .geo__mode { display: flex; gap: 16px; align-items: flex-start; }
 .geo__mode-ic {
@@ -497,6 +499,8 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   }
   .section__lead { font-size: 17px; }
   .geo__dirs li { font-size: 16px; }
+  .geo__map { overflow-x: visible; margin-bottom: 44px; }
+  .geo__img { min-width: 0; }
 
   .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .carousel__track { gap: 20px; }
@@ -555,7 +559,9 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .about__text p { font-size: 17px; }
   .carousel__track { gap: 24px; }
   .slide { flex-basis: calc((100% - 48px) / 3); }
-  .geo { gap: 40px; }
+  .geo__map { margin-bottom: 48px; }
+  /* на широких экранах ограничиваем высоту ленты; кадр центрируем на поясе маршрутов */
+  .geo__img { max-height: 660px; object-fit: cover; object-position: 50% 42%; }
   .geo__modes { grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature { padding: 28px; }
