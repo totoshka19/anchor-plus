@@ -278,22 +278,80 @@ section[id] { scroll-margin-top: var(--header-h); }
   text-wrap: balance; /* строки равной длины при переносе */
 }
 
-/* Карточки грузов */
-.cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
-.card {
-  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius);
-  overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
+/* Карусель грузов */
+.carousel { position: relative; }
+.carousel__viewport { overflow: hidden; }
+.carousel__track {
+  display: flex; gap: 16px; transition: transform .45s ease;
+  touch-action: pan-y; /* вертикальную прокрутку пальцем отдаём браузеру */
+  -webkit-user-select: none; user-select: none; /* драг по слайдам листает, а не выделяет текст */
+  cursor: grab;
 }
-.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-/* фон-заглушка виден, пока грузится lazy-фото */
-.card__media {
-  width: 100%; height: 190px;
-  object-fit: cover; object-position: center;
-  background: var(--c-bg-alt);
+.carousel__track:active { cursor: grabbing; }
+
+.slide {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  flex: 0 0 100%;
+  height: 420px;
+  background: var(--c-navy); /* фолбэк, пока грузится фото */
 }
-.card__body { padding: 24px; }
-.card__title { font-size: 20px; margin-bottom: 10px; }
-.card__text { color: var(--c-muted); font-size: 15.5px; }
+.slide__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform .5s ease;
+}
+/* постоянный градиент снизу — белое название читаемо на любом фото */
+.slide::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(11,20,38,.82) 0%, rgba(11,20,38,.28) 45%, rgba(11,20,38,.06) 75%);
+}
+/* вуаль раскрытого состояния */
+.slide::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: rgba(11,20,38,.74); opacity: 0; transition: opacity .35s ease;
+}
+.slide__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 20px 22px; }
+.slide__title { color: #fff; font-size: 21px; }
+/* текст переменной высоты раскрывается грид-рядом: 0fr -> 1fr */
+.slide__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+.slide__text {
+  overflow: hidden; min-height: 0;
+  color: #dbe7f6; font-size: 15px; margin-top: 0;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .3s ease, transform .4s ease, margin-top .4s ease;
+}
+/* раскрытие: тап на таче (класс из JS) и фокус с клавиатуры; ховер — ниже, где он есть */
+.slide.is-open::before,      .slide:focus-visible::before      { opacity: 1; }
+.slide.is-open .slide__bg,   .slide:focus-visible .slide__bg   { transform: scale(1.06); }
+.slide.is-open .slide__more, .slide:focus-visible .slide__more { grid-template-rows: 1fr; }
+.slide.is-open .slide__text, .slide:focus-visible .slide__text { opacity: 1; transform: none; margin-top: 10px; }
+@media (hover: hover) {
+  .slide:hover::before      { opacity: 1; }
+  .slide:hover .slide__bg   { transform: scale(1.06); }
+  .slide:hover .slide__more { grid-template-rows: 1fr; }
+  .slide:hover .slide__text { opacity: 1; transform: none; margin-top: 10px; }
+}
+
+.carousel__nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; }
+.carousel__arrow {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; color: var(--c-blue); box-shadow: var(--shadow);
+  display: grid; place-items: center;
+  transition: background .2s ease, color .2s ease, opacity .2s ease;
+}
+.carousel__arrow:hover:not(:disabled) { background: var(--c-blue); color: #fff; }
+.carousel__arrow:disabled { opacity: .35; cursor: default; }
+.carousel__arrow--prev .icon { transform: rotate(90deg); }
+.carousel__arrow--next .icon { transform: rotate(-90deg); }
+
+.carousel__dots { display: flex; gap: 4px; }
+/* кнопка 24px — удобный тач-таргет, видимая точка — ::before */
+.carousel__dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
+.carousel__dot::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: #c9d6e6; transition: background .2s ease, transform .2s ease;
+}
+.carousel__dot:hover::before { background: var(--c-blue-light); }
+.carousel__dot.is-active::before { background: var(--c-blue); transform: scale(1.35); }
 
 /* География */
 .geo { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
@@ -396,6 +454,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero__scroll { animation: none; }
+  .carousel__track, .slide__bg, .slide__more, .slide__text { transition: none; }
 }
 
 /* ============================================================
@@ -432,7 +491,9 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   }
   .section__lead { font-size: 17px; }
 
-  .cards, .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .carousel__track { gap: 20px; }
+  .slide { flex-basis: calc((100% - 20px) / 2); }
   .partners { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .contacts { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
@@ -485,7 +546,8 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
 
   .about__grid { grid-template-columns: 1.6fr 1fr; gap: 48px; }
   .about__text p { font-size: 17px; }
-  .cards { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .carousel__track { gap: 24px; }
+  .slide { flex-basis: calc((100% - 48px) / 3); }
   .geo { grid-template-columns: 1.5fr 1fr; gap: 40px; }
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature { padding: 28px; }

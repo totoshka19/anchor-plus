@@ -79,4 +79,84 @@
     // Фолбэк: если IntersectionObserver не поддерживается — просто показываем
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
+
+  /* --- Карусель «Грузы» --- */
+  const carousel = document.getElementById("cargoCarousel");
+  if (carousel) {
+    const track   = carousel.querySelector(".carousel__track");
+    const slides  = Array.from(track.children);
+    const prevBtn = document.getElementById("cargoPrev");
+    const nextBtn = document.getElementById("cargoNext");
+    const dotsBox = document.getElementById("cargoDots");
+    let index = 0;
+    let perView = 0;
+    let dots = [];
+
+    // те же брейкпоинты, что в CSS: 3 слайда на десктопе, 2 на планшете, 1 на мобайле
+    const getPerView = () => (window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+    const maxIndex = () => slides.length - perView;
+
+    function buildDots() {
+      dotsBox.innerHTML = "";
+      dots = Array.from({ length: maxIndex() + 1 }, (_, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel__dot";
+        dot.setAttribute("aria-label", `Слайд ${i + 1}`);
+        dot.addEventListener("click", () => goTo(i));
+        dotsBox.appendChild(dot);
+        return dot;
+      });
+    }
+
+    function update() {
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const step = slides[0].getBoundingClientRect().width + gap;
+      track.style.transform = `translateX(${-index * step}px)`;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === maxIndex();
+      dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(i, maxIndex()));
+      update();
+    }
+
+    prevBtn.addEventListener("click", () => goTo(index - 1));
+    nextBtn.addEventListener("click", () => goTo(index + 1));
+
+    function layout() {
+      const pv = getPerView();
+      if (pv !== perView) { perView = pv; buildDots(); }
+      goTo(index);
+    }
+    window.addEventListener("resize", layout);
+    layout();
+
+    // листаем только горизонтальные жесты: вертикальные — прокрутка страницы
+    let startX = null, startY = null;
+    track.addEventListener("pointerdown", (e) => { startX = e.clientX; startY = e.clientY; });
+    track.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo(index + (dx < 0 ? 1 : -1));
+    });
+    track.addEventListener("pointercancel", () => { startX = null; });
+    // нативное перетаскивание <img> перехватывало бы жест мыши
+    track.addEventListener("dragstart", (e) => e.preventDefault());
+
+    // без ховера (тач) описание раскрывается тапом
+    if (window.matchMedia("(hover: none)").matches) {
+      slides.forEach((slide) => {
+        slide.addEventListener("click", () => {
+          const wasOpen = slide.classList.contains("is-open");
+          slides.forEach((s) => s.classList.remove("is-open"));
+          if (!wasOpen) slide.classList.add("is-open");
+        });
+      });
+    }
+  }
 })();
