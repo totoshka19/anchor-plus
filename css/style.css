@@ -611,7 +611,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .about__grid { grid-template-columns: 1.6fr 1fr; gap: 48px; }
   .request-layout { grid-template-columns: 1.6fr 1fr; gap: 48px; }
   .request-ornament { display: block; }  /* в правой колонке рядом с формой, хаб вровень с её верхом */
-  .about__text p { font-size: 17px; }
+  .about__text p, .cooperation__text p { font-size: 17px; }
   .carousel__track { gap: 24px; }
   .slide { flex-basis: calc((100% - 48px) / 3); }
   .geo__map { margin-bottom: 48px; }
