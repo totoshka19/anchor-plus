@@ -220,6 +220,11 @@ const L10N = {
 };
 
 const build = t => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${t.aria}">
+  <style><![CDATA[
+    /* @media меряет ширину отрисовки SVG: на узком экране (телефон) подписи крупнее */
+    .labels { font-size: 25px; }
+    @media (max-width: 600px) { .labels { font-size: 48px; } }
+  ]]></style>
   <defs>
     <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="${C.blue}"/>
@@ -248,8 +253,8 @@ const build = t => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${
   ${node(P.china, C.blueLt)}
   ${node(P.vlad, C.blueLt)}
 
-  <!-- подписи: белая обводка, чтобы читались поверх точек -->
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="${C.navy}"
+  <!-- подписи: белая обводка, чтобы читались поверх точек; класс labels — для медиазапроса -->
+  <g class="labels" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="${C.navy}"
      paint-order="stroke" stroke="#fff" stroke-width="7" stroke-linejoin="round">
     ${label(P.moscow, -32, t.russia)}
     ${label(P.cis, 48, t.cis)}

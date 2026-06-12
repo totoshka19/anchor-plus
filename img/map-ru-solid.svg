@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 924" role="img" aria-label="Карта направлений перевозок: Россия, Казахстан, страны СНГ, Китай и страны Азии, морские порты">
+  <style><![CDATA[
+    /* @media меряет ширину отрисовки SVG: на узком экране (телефон) подписи крупнее */
+    .labels { font-size: 25px; }
+    @media (max-width: 600px) { .labels { font-size: 48px; } }
+  ]]></style>
   <defs>
     <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#2b5a9e"/>
@@ -27,8 +32,8 @@
   <g><circle cx="927" cy="647" r="17" fill="none" stroke="#3d6fb5" stroke-width="2.5" opacity=".4"/><circle cx="927" cy="647" r="9" fill="#3d6fb5"/></g>
   <g><circle cx="1140" cy="561" r="17" fill="none" stroke="#3d6fb5" stroke-width="2.5" opacity=".4"/><circle cx="1140" cy="561" r="9" fill="#3d6fb5"/></g>
 
-  <!-- подписи: белая обводка, чтобы читались поверх точек -->
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="#14284a"
+  <!-- подписи: белая обводка, чтобы читались поверх точек; класс labels — для медиазапроса -->
+  <g class="labels" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="#14284a"
      paint-order="stroke" stroke="#fff" stroke-width="7" stroke-linejoin="round">
     <text x="393" y="378" text-anchor="middle">Россия</text>
     <text x="313" y="482" text-anchor="middle">Страны СНГ</text>
