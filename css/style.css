@@ -471,11 +471,24 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
 .footer__list a, .footer__list span { font-size: 15px; color: #c4d2e6; transition: color .2s ease; }
 .footer__list a:hover { color: #fff; }
 
+/* Контакты в футере: маленькие иконки рядом с текстом */
+.footer__list--contacts li { display: flex; align-items: flex-start; gap: 10px; }
+.footer__list--contacts .icon {
+  width: 16px; height: 16px; flex-shrink: 0;
+  margin-top: 4px;            /* центр иконки 16px по центру первой строки (line-height 24px): (24-16)/2 */
+  color: inherit;
+}
+
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); }
 .footer__bottom-inner {
   display: flex; flex-direction: column; gap: 8px;
   padding: 20px var(--container-pad); font-size: 13.5px; color: #8ea3c0;
 }
+.footer__policy {
+  color: inherit; text-decoration: none;
+  transition: color .2s ease;
+}
+.footer__policy:hover { color: #fff; }
 
 /* Кнопка «наверх» */
 .to-top {

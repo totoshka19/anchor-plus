@@ -140,11 +140,12 @@
     "contacts.addressLabel": "Address",
     "contacts.addressValue": "123112, Moscow, Presnenskaya nab. 12, office 15/27",
 
-    "footer.desc": "Freight forwarding company. International transportation of coal, metal products and ferroalloys.",
+    "footer.desc": "Reliable logistics for large industrial shipments",
     "footer.navTitle": "Navigation",
     "footer.contactsTitle": "Contacts",
     "footer.copy": "JSC ANCHOR\u00A0PLUS. All rights reserved.",
-    "footer.legal": "TIN 7720853862 · PSRN 1217700412731"
+    "footer.legal": "TIN 7720853862 · PSRN 1217700412731",
+    "footer.privacy": "Privacy Policy"
   };
 
   /* --------------------------- Движок (общий) --------------------------- */

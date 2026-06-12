@@ -8,7 +8,7 @@
         content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
   <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
   <!-- ?v= обходит месячный кэш браузера (см. .htaccess): изменив css/js, увеличьте номер -->
-  <link rel="stylesheet" href="css/style.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=23">
   <!-- хиро-фон виден сразу: начинаем грузить раньше, чем его обнаружит разбор CSS -->
   <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
 </head>
@@ -466,7 +466,7 @@
     <div class="container footer__inner">
       <div class="footer__col footer__brand">
         <img src="img/logo.svg" data-i18n-src="logo.src" alt="АНКОР ПЛЮС" data-i18n-alt="brand.name" class="footer__logo" width="200" height="54">
-        <p class="footer__desc" data-i18n="footer.desc">Транспортно-экспедиционная компания. Международные перевозки угля, металлопродукции и&nbsp;ферросплавов.</p>
+        <p class="footer__desc" data-i18n="footer.desc">Надёжная&nbsp;логистика для&nbsp;крупных&nbsp;промышленных&nbsp;партий</p>
       </div>
 
       <div class="footer__col">
@@ -482,10 +482,10 @@
 
       <div class="footer__col">
         <h4 class="footer__title" data-i18n="footer.contactsTitle">Контакты</h4>
-        <ul class="footer__list">
-          <li><a href="tel:+79295847244">+7 (929) 584-72-44</a></li>
-          <li><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></li>
-          <li><span data-i18n="contacts.addressValue">123112, г.&nbsp;Москва, Пресненская&nbsp;наб., д.&nbsp;12, помещ.&nbsp;15/27</span></li>
+        <ul class="footer__list footer__list--contacts">
+          <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+79295847244">+7 (929) 584-72-44</a></li>
+          <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></li>
+          <li><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="contacts.addressValue">123112, г.&nbsp;Москва, Пресненская&nbsp;наб., д.&nbsp;12, помещ.&nbsp;15/27</span></li>
         </ul>
       </div>
     </div>
@@ -493,6 +493,8 @@
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <p>©&nbsp;<span id="year">2026</span> <span data-i18n="footer.copy">АО&nbsp;«АНКОР&nbsp;ПЛЮС». Все&nbsp;права защищены.</span></p>
+        <!-- TODO(юрист): href="#" → реальная «Политика конфиденциальности» (152-ФЗ); тот же адрес продублировать в чекбоксе согласия формы заявки -->
+        <a class="footer__policy" href="#" data-i18n="footer.privacy">Политика&nbsp;конфиденциальности</a>
         <p class="footer__legal" data-i18n="footer.legal">ИНН&nbsp;7720853862 · ОГРН&nbsp;1217700412731</p>
       </div>
     </div>
@@ -502,7 +504,7 @@
     <svg class="icon"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="js/i18n.js?v=17"></script>
+  <script src="js/i18n.js?v=19"></script>
   <script src="js/main.js?v=17"></script>
 </body>
 </html>
