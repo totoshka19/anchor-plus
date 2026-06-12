@@ -22,7 +22,7 @@
     "nav.geo": "Geography",
     "nav.why": "Advantages",
     "nav.partners": "Cooperation",
-    "nav.contacts": "Contacts",
+    "nav.request": "Request",
 
     "hero.eyebrow": "Freight forwarding company",
     "hero.title": "Transportation of industrial and raw material cargo",
@@ -132,12 +132,6 @@
     "request.submit": "Submit request",
     "request.success": "Thank you! We will get in touch with you shortly.",
 
-    "contacts.kicker": "Contacts",
-    "contacts.title": "Get in touch",
-    "contacts.lead": "Call us for a consultation and a shipping cost estimate — we will find the best route.",
-    "contacts.phoneLabel": "Phone",
-    "contacts.emailLabel": "Email",
-    "contacts.addressLabel": "Address",
     "contacts.addressValue": "123112, Moscow, Presnenskaya nab. 12, office 15/27",
 
     "footer.desc": "Reliable logistics for large industrial shipments",

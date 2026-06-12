@@ -439,23 +439,6 @@ section[id] { scroll-margin-top: var(--header-h); }
 .request-form__status { font-size: 15px; font-weight: 600; color: var(--c-blue); opacity: 1; transition: opacity .5s ease; }
 .request-form__status.is-hiding { opacity: 0; }
 
-/* Контакты */
-.section--contacts .section__head { margin-left: auto; margin-right: auto; text-align: center; }
-.contacts { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 780px; margin: 0 auto; }
-.contact-card {
-  background: var(--c-card); border: 1px solid var(--c-border); border-radius: var(--radius);
-  padding: 26px 18px; text-align: center; box-shadow: var(--shadow);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--c-blue-light); }
-.contact-card__ic {
-  width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--grad-brand); color: #fff; margin-bottom: 6px;
-}
-.contact-card__label { font-size: 13px; color: var(--c-muted); text-transform: uppercase; letter-spacing: .08em; }
-.contact-card__value { font-weight: 700; color: var(--c-navy); font-size: 15.5px; word-break: break-word; }
-
 /* ============================================================
    ФУТЕР — база (мобайл): одна колонка
    ============================================================ */
@@ -554,7 +537,6 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .carousel__track { gap: 20px; }
   .slide { flex-basis: calc((100% - 20px) / 2); }
   .cooperation { grid-template-columns: 1.1fr 1fr; gap: 36px; }
-  .contacts { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .form-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .field--wide { grid-column: 1 / -1; }
@@ -621,7 +603,6 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature { padding: 28px; }
   .cooperation { gap: 48px; }
-  .contacts { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
   .footer__inner { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding: 60px var(--container-pad) 44px; }
 
