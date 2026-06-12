@@ -18,12 +18,26 @@ const DATA_URL = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector
 
 /* ----------------------------- Параметры ----------------------------- */
 
-// Видимое окно карты: северо-восточная четверть (Вост. Европа → Япония)
-const LON = [15, 150];
-const LAT = [6, 76];
+// Окно по всему материку Евразия: Иберия/Британия → Чукотка, юг Индии → Арктика.
+// Африки и прочих материков нет вовсе — фильтруем по CONTINENT при сборке (только Europe/Asia).
+const LON = [-12, 190];  // Британские о-ва/Иберия → Чукотка (за 180° — через разворот антимеридиана)
+const LAT = [6, 78];     // от 6° с.ш. (юг Индии/Шри-Ланка) до 78° с.ш. (арктическое побережье)
 
 const W = 1600;                                        // ширина viewBox
-const H = Math.round(W * (LAT[1] - LAT[0]) / (LON[1] - LON[0])); // ≈830, равнопромежуточная проекция
+// Гибрид «равномерный наклон ↔ Меркатор». MIX: 0 = прошлая версия (φ0=45°, Россия плосковата),
+// 1 = чистый Меркатор (Россия сильно вытянута). 0.7 → пропорции России ≈ настоящие (Ш/В ~2.3).
+const MIX  = 0.7;
+const PHI0 = 45 * Math.PI / 180;
+const mercY = lat => Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360));
+const Y_TOP = mercY(LAT[1]), Y_BOT = mercY(LAT[0]);
+// нормализованная вертикальная позиция (0 — верх окна, 1 — низ) каждой проекции, затем смешиваем
+const fLin = lat => (LAT[1] - lat) / (LAT[1] - LAT[0]);
+const fMer = lat => (Y_TOP - mercY(lat)) / (Y_TOP - Y_BOT);
+const fY   = lat => (1 - MIX) * fLin(lat) + MIX * fMer(lat);
+// высота — такое же смешение масштабов обеих проекций
+const H_LIN = W * (LAT[1] - LAT[0]) / ((LON[1] - LON[0]) * Math.cos(PHI0));
+const H_MER = W * (Y_TOP - Y_BOT) / ((LON[1] - LON[0]) * Math.PI / 180);
+const H = Math.round((1 - MIX) * H_LIN + MIX * H_MER);
 
 // Палитра — соответствует :root в css/style.css
 const C = {
@@ -42,10 +56,13 @@ const OPS = new Set([
   'Uzbekistan', 'Turkmenistan', 'Tajikistan', 'Kyrgyzstan', 'China',
 ]);
 
+// Острова-«сироты», засоряющие кадр и не относящиеся к маршрутам — не рисуем.
+const SKIP = new Set(['Iceland', 'Philippines', 'Malaysia', 'Brunei']);
+
 /* ------------------------- Проекция и геометрия ------------------------- */
 
 const px = lon => (lon - LON[0]) / (LON[1] - LON[0]) * W;
-const py = lat => (LAT[1] - lat) / (LAT[1] - LAT[0]) * H;
+const py = lat => fY(lat) * H;
 
 const bbox = ring => {
   let minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
@@ -54,6 +71,18 @@ const bbox = ring => {
     if (y < minY) minY = y; if (y > maxY) maxY = y;
   }
   return [minX, minY, maxX, maxY];
+};
+
+// Разворот антимеридиана: точки западного полушария (Чукотка хранится как -180…-169)
+// переносим за +180°, чтобы Дальний Восток рисовался непрерывно справа, а не заворачивался влево.
+// Россия: разворачиваем любую отрицательную долготу (легитимного запада у неё нет).
+// Прочие страны: только если кольцо реально пересекает 180° (есть точки и >150°, и <-150°),
+// иначе развернули бы Гренландию/Исландию, лежащие у западного края окна.
+const unwrap = pts => pts.map(([lo, la]) => [lo < 0 ? lo + 360 : lo, la]);
+const normRing = (pts, isRU) => {
+  if (isRU) return unwrap(pts);
+  const crossesAM = pts.some(p => p[0] > 150) && pts.some(p => p[0] < -150);
+  return crossesAM ? unwrap(pts) : pts;
 };
 
 /* ----------------------------- Загрузка данных ----------------------------- */
@@ -72,12 +101,20 @@ const shapes = [];
 const foundOps = new Set();
 for (const f of geo.features) {
   const name = f.properties.ADMIN ?? f.properties.admin;
+  // Только материк Евразия: Африку, обе Америки, Океанию и пр. не рисуем вовсе.
+  const cont = f.properties.CONTINENT ?? f.properties.continent;
+  if (cont !== 'Europe' && cont !== 'Asia') continue;
+  if (SKIP.has(name)) continue;   // отдельные острова-«сироты»
   const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates]
     : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
   const ops = OPS.has(name);
+  const isRU = name === 'Russia';
   if (ops) foundOps.add(name);
   for (const poly of polys) {
-    shapes.push({ ops, rings: poly.map((pts, i) => ({ bbox: bbox(pts), outer: i === 0, pts })) });
+    shapes.push({ ops, rings: poly.map((pts, i) => {
+      const n = normRing(pts, isRU);
+      return { bbox: bbox(n), outer: i === 0, pts: n };
+    }) });
   }
 }
 const missing = [...OPS].filter(n => !foundOps.has(n));
@@ -89,12 +126,26 @@ if (missing.length) console.warn('ВНИМАНИЕ, не найдены стра
 const inWindow = ([bx0, by0, bx1, by1]) =>
   bx1 >= LON[0] && bx0 <= LON[1] && by1 >= LAT[0] && by0 <= LAT[1];
 
+// Шпицберген (Svalbard) — отдельные полигоны в мультиполигоне Норвегии. Убираем именно их по зоне
+// (долгота 5–40°, широта >72°): больше там никакой суши нет, материк Норвегии (<71°) не задеваем.
+const isSvalbard = ([bx0, by0, bx1, by1]) => bx0 > 5 && bx1 < 40 && by0 > 72;
+
 const ringPath = pts =>
   pts.map(([lon, lat], i) => `${i ? 'L' : 'M'}${px(lon).toFixed(1)} ${py(lat).toFixed(1)}`).join('') + 'Z';
 
-const solid = { base: [], ops: [] };
+// Куски России за антимеридианом (после разворота их bbox начинается на ~180°): восток Чукотки и
+// о. Врангеля. На стыке с материком вдоль 180° две белые обводки дают вертикальный «шов».
+// Рисуем их отдельным слоем БЕЗ обводки и с лёгким нахлёстом на запад — заливка закрывает шов.
+const isEastAM = ([bx0]) => bx0 >= 179.9;
+const nudgeWest = pts => pts.map(([lo, la]) => [Math.abs(lo - 180) < 0.05 ? 179.5 : lo, la]);
+
+const solid = { base: [], ops: [], seam: [] };
 for (const s of shapes) {
-  if (!inWindow(s.rings[0].bbox)) continue;
+  if (!inWindow(s.rings[0].bbox) || isSvalbard(s.rings[0].bbox)) continue;
+  if (isEastAM(s.rings[0].bbox)) {
+    solid.seam.push(s.rings.map(r => ringPath(nudgeWest(r.pts))).join(''));
+    continue;
+  }
   solid[s.ops ? 'ops' : 'base'].push(s.rings.map(r => ringPath(r.pts)).join(''));
 }
 
@@ -102,6 +153,10 @@ for (const s of shapes) {
 const solidLayer = (paths, color) =>
   `<g fill="${color}" fill-rule="evenodd" stroke="#fff" stroke-width="1.2" stroke-linejoin="round">` +
   paths.map(d => `<path d="${d}"/>`).join('') + `</g>`;
+
+// слой-«заплатка» для стыка 180°: только заливка цветом России, без обводки
+const seamLayer = paths =>
+  `<g fill="${C.solidOps}" fill-rule="evenodd">` + paths.map(d => `<path d="${d}"/>`).join('') + `</g>`;
 
 /* --------------------------- Узлы и маршруты --------------------------- */
 
@@ -175,6 +230,7 @@ const build = t => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${
   <!-- суша: фон + страны присутствия -->
   ${solidLayer(solid.base, C.solidBase)}
   ${solidLayer(solid.ops, C.solidOps)}
+  ${seamLayer(solid.seam)}
 
   <!-- дуги маршрутов -->
   <g fill="none" stroke="url(#route)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 14">

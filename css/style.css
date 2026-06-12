@@ -363,11 +363,12 @@ section[id] { scroll-margin-top: var(--header-h); }
 /* Карта — лента на всю ширину экрана (блок вынесен из .container).
    На мобайле широкую карту листают по горизонтали, с планшета она целиком в экране. */
 .geo__map {
-  background: linear-gradient(180deg, var(--c-bg) 0%, var(--c-bg-alt) 22%, var(--c-bg-alt) 78%, var(--c-bg) 100%);
-  overflow-x: auto;
-  margin-bottom: 36px;
+  max-width: var(--container);   /* карта в рамках контейнера, а не во всю ширину экрана */
+  margin: 0 auto 36px;
+  padding: 0 var(--container-pad);
 }
-.geo__img { width: 100%; min-width: 720px; height: auto; margin: 0 auto; }
+/* карта всегда целиком: на мобиле просто уменьшается, без горизонтальной прокрутки */
+.geo__img { display: block; width: 100%; height: auto; }
 .geo__modes { display: grid; gap: 18px; }
 .geo__mode { display: flex; gap: 16px; align-items: flex-start; }
 .geo__mode-ic {
@@ -530,8 +531,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   }
   .section__lead { font-size: 17px; }
   .geo__dirs li { font-size: 16px; }
-  .geo__map { overflow-x: visible; margin-bottom: 44px; }
-  .geo__img { min-width: 0; }
+  .geo__map { margin-bottom: 44px; }
 
   .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .carousel__track { gap: 20px; }
@@ -596,9 +596,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   .about__text p, .cooperation__text p { font-size: 17px; }
   .carousel__track { gap: 24px; }
   .slide { flex-basis: calc((100% - 48px) / 3); }
-  .geo__map { margin-bottom: 48px; }
-  /* на широких экранах ограничиваем высоту ленты; кадр центрируем на поясе маршрутов */
-  .geo__img { max-height: 660px; object-fit: cover; object-position: 50% 42%; }
+  .geo__map { margin-bottom: 48px; }   /* десктоп: карта во всю ширину, без обрезки */
   .geo__modes { grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature { padding: 28px; }
