@@ -21,7 +21,7 @@
     "nav.cargo": "Cargo",
     "nav.geo": "Geography",
     "nav.why": "Advantages",
-    "nav.partners": "Partners",
+    "nav.partners": "Cooperation",
     "nav.contacts": "Contacts",
 
     "hero.eyebrow": "Freight forwarding company",
@@ -103,9 +103,11 @@
     "why.f6.title": "Large-volume shipments",
     "why.f6.text": "We arrange transportation for industrial enterprises, traders, manufacturers and exporters.",
 
-    "partners.kicker": "Partners",
-    "partners.title": "Our partners",
-    "partners.lead": "We are open to cooperation with shippers, carriers and port operators.",
+    "partners.kicker": "Cooperation",
+    "partners.title": "Open to cooperation",
+    "partners.p1": "We are ready for long-term cooperation with shippers, manufacturing enterprises, traders, carriers, terminals, port operators and logistics partners.",
+    "partners.p2": "Our goal is to build resilient transport chains that help businesses deliver cargo reliably, transparently and on agreed timelines.",
+    "partners.imgAlt": "A worker in a hard hat and a manager review a shipping route on a tablet at a sea port near a freight train",
 
     "contacts.kicker": "Contacts",
     "contacts.title": "Get in touch",

@@ -394,15 +394,12 @@ section[id] { scroll-margin-top: var(--header-h); }
 .feature__title { font-size: 19px; margin-bottom: 8px; }
 .feature__text { color: var(--c-muted); font-size: 15.5px; }
 
-/* Партнёры */
-.partners { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.partners__item {
-  height: 84px; display: grid; place-items: center;
-  border: 1px dashed var(--c-border); border-radius: var(--radius-sm);
-  background: #fff; color: #aab6c8; font-weight: 700; font-size: 14px;
-  transition: border-color .2s ease, color .2s ease, transform .2s ease;
-}
-.partners__item:hover { border-color: var(--c-blue-light); color: var(--c-blue); transform: translateY(-3px); }
+/* Сотрудничество */
+.cooperation { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
+.cooperation__text p { color: var(--c-muted); font-size: 16px; margin-bottom: 16px; }
+.cooperation__text p:last-child { margin-bottom: 0; }
+.cooperation__media { margin: 0; }
+.cooperation__media img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); }
 
 /* Контакты */
 .section--contacts .section__head { margin-left: auto; margin-right: auto; text-align: center; }
@@ -505,7 +502,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .carousel__track { gap: 20px; }
   .slide { flex-basis: calc((100% - 20px) / 2); }
-  .partners { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cooperation { grid-template-columns: 1.1fr 1fr; gap: 36px; }
   .contacts { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; padding: 52px var(--container-pad) 40px; }
@@ -565,7 +562,7 @@ a.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg)
   .geo__modes { grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
   .features { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .feature { padding: 28px; }
-  .partners { grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .cooperation { gap: 48px; }
   .contacts { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
   .footer__inner { grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding: 60px var(--container-pad) 44px; }
