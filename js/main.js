@@ -159,4 +159,99 @@
       });
     }
   }
+
+  /* --- Форма заявки (клиентская валидация; отправка — заглушка) --- */
+  const requestForm = document.getElementById("requestForm");
+  if (requestForm) {
+    const statusEl = document.getElementById("requestStatus");
+
+    // сообщение об успехе: показать и через паузу плавно убрать
+    let statusTimer = null;
+    const showStatus = () => {
+      if (!statusEl) return;
+      clearTimeout(statusTimer);
+      statusEl.classList.remove("is-hiding");
+      statusEl.hidden = false;                   // текст уже локализован через data-i18n
+      statusTimer = setTimeout(() => {
+        statusEl.classList.add("is-hiding");      // запускаем угасание (opacity → 0)
+        statusTimer = setTimeout(() => {          // после перехода убираем из потока
+          statusEl.hidden = true;
+          statusEl.classList.remove("is-hiding");
+        }, 500);
+      }, 6000);
+    };
+
+    // показать/скрыть ошибку у поля и связанной подписи (aria-describedby)
+    const setError = (input, show) => {
+      const errEl = document.getElementById(input.getAttribute("aria-describedby"));
+      input.classList.toggle("is-invalid", show);
+      input.setAttribute("aria-invalid", show ? "true" : "false");
+      if (errEl) errEl.hidden = !show;
+    };
+
+    // нормализуем телефон к российскому формату +7 (XXX) XXX-XX-XX
+    const phoneInput = requestForm.elements["phone"];
+    const phoneDigits = (v) => {
+      let d = v.replace(/\D/g, "");
+      if (d[0] === "7" || d[0] === "8") d = d.slice(1); // отбрасываем код страны
+      return d.slice(0, 10);                            // максимум 10 национальных цифр
+    };
+    const formatPhone = (v) => {
+      const d = phoneDigits(v);
+      if (!d) return "";
+      let out = "+7 (" + d.slice(0, 3);
+      if (d.length >= 3) out += ")";
+      if (d.length > 3)  out += " "  + d.slice(3, 6);
+      if (d.length > 6)  out += "-"  + d.slice(6, 8);
+      if (d.length > 8)  out += "-"  + d.slice(8, 10);
+      return out;
+    };
+
+    // обязательны: имя (непустое), телефон (ровно 10 цифр), согласие (отмечено)
+    const checks = {
+      name:    (v) => v.trim().length > 0,
+      phone:   (v) => phoneDigits(v).length === 10,
+      consent: (el) => el.checked,
+    };
+
+    requestForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let firstInvalid = null;
+
+      ["name", "phone"].forEach((nm) => {
+        const input = requestForm.elements[nm];
+        const ok = checks[nm](input.value);
+        setError(input, !ok);
+        if (!ok && !firstInvalid) firstInvalid = input;
+      });
+
+      const consent = requestForm.elements["consent"];
+      const consentOk = checks.consent(consent);
+      setError(consent, !consentOk);
+      if (!consentOk && !firstInvalid) firstInvalid = consent;
+
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      // ---- ЗАГЛУШКА ОТПРАВКИ ----
+      // TODO(бэкенд): заменить на реальную отправку, напр.:
+      //   const data = Object.fromEntries(new FormData(requestForm));
+      //   fetch("/api/request", { method: "POST", body: JSON.stringify(data) })
+      //     .then(() => showSuccess()).catch(() => showError());
+      // и показывать успех только после ответа сервера.
+      console.warn("[requestForm] Отправка не подключена — это клиентская заглушка.");
+      requestForm.reset();
+      showStatus();
+    });
+
+    // маска телефона: на лету вырезаем нецифры и форматируем как +7 (XXX) XXX-XX-XX
+    phoneInput.addEventListener("input", () => {
+      const formatted = formatPhone(phoneInput.value);
+      if (phoneInput.value !== formatted) phoneInput.value = formatted;
+    });
+
+    // снимаем подсветку ошибки, как только пользователь правит поле
+    requestForm.addEventListener("input", (e) => {
+      if (e.target.classList.contains("is-invalid")) setError(e.target, false);
+    });
+  }
 })();

@@ -8,7 +8,7 @@
         content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
   <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
   <!-- ?v= обходит месячный кэш браузера (см. .htaccess): изменив css/js, увеличьте номер -->
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=17">
   <!-- хиро-фон виден сразу: начинаем грузить раньше, чем его обнаружит разбор CSS -->
   <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
 </head>
@@ -336,6 +336,101 @@
       </div>
     </section>
 
+    <!-- ============================ ЗАЯВКА НА РАСЧЁТ ============================ -->
+    <section class="section section--alt" id="request">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker" data-i18n="request.kicker">Заявка</span>
+          <h2 class="section__title" data-i18n="request.title">Рассчитаем маршрут и&nbsp;стоимость перевозки</h2>
+          <p class="section__lead" data-i18n="request.lead">Свяжитесь с&nbsp;нами, чтобы получить консультацию по&nbsp;перевозке вашего груза. Мы&nbsp;уточним характеристики партии, направление, сроки и&nbsp;предложим оптимальную транспортную схему.</p>
+        </div>
+
+        <!-- Реальная отправка не подключена: форма валидируется на клиенте,
+             submit перехватывается в js/main.js (блок «Форма заявки»).
+             TODO(бэкенд): слать данные на свой эндпойнт (fetch POST) и показывать
+             успех только после ответа сервера. -->
+        <div class="request-layout">
+        <form class="request-form reveal" id="requestForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label" for="rf-name"><span data-i18n="request.nameLabel">Имя</span> <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="rf-name" name="name" type="text" autocomplete="name"
+                     required aria-describedby="rf-name-err"
+                     data-i18n-placeholder="request.namePh" placeholder="Как к вам обращаться">
+              <span class="field__error" id="rf-name-err" data-i18n="request.errRequired" hidden>Заполните это поле</span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="rf-phone"><span data-i18n="request.phoneLabel">Телефон</span> <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="rf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"
+                     required aria-describedby="rf-phone-err"
+                     data-i18n-placeholder="request.phonePh" placeholder="+7 (___) ___-__-__">
+              <span class="field__error" id="rf-phone-err" data-i18n="request.errPhone" hidden>Укажите корректный телефон</span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="rf-company" data-i18n="request.companyLabel">Компания</label>
+              <input class="field__input" id="rf-company" name="company" type="text" autocomplete="organization"
+                     data-i18n-placeholder="request.companyPh" placeholder="Название компании">
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="rf-cargo" data-i18n="request.cargoLabel">Тип груза</label>
+              <input class="field__input" id="rf-cargo" name="cargo" type="text"
+                     data-i18n-placeholder="request.cargoPh" placeholder="Уголь, металл, зерно…">
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="rf-direction" data-i18n="request.directionLabel">Направление перевозки</label>
+              <input class="field__input" id="rf-direction" name="direction" type="text"
+                     data-i18n-placeholder="request.directionPh" placeholder="Откуда → куда">
+            </div>
+
+            <div class="field field--wide">
+              <label class="field__label" for="rf-message" data-i18n="request.messageLabel">Сообщение</label>
+              <textarea class="field__input field__textarea" id="rf-message" name="message" rows="4"
+                        data-i18n-placeholder="request.messagePh" placeholder="Объём партии, сроки, особые требования"></textarea>
+            </div>
+          </div>
+
+          <label class="consent" for="rf-consent">
+            <input class="consent__box" id="rf-consent" name="consent" type="checkbox" required aria-describedby="rf-consent-err">
+            <!-- TODO(юрист): заменить href="#" на реальную «Политику конфиденциальности» (обязательно по 152-ФЗ) -->
+            <span class="consent__text"><span data-i18n="request.consentText">Я&nbsp;даю согласие на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;</span><a href="#" class="consent__link" data-i18n="request.consentLink">Политикой&nbsp;конфиденциальности</a></span>
+          </label>
+          <span class="field__error" id="rf-consent-err" data-i18n="request.errConsent" hidden>Необходимо согласие на обработку персональных данных</span>
+
+          <div class="request-form__actions">
+            <button class="btn btn--primary" type="submit" data-i18n="request.submit">Отправить заявку</button>
+            <p class="request-form__status" id="requestStatus" role="status" aria-live="polite" data-i18n="request.success" hidden>Спасибо! Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время.</p>
+          </div>
+        </form>
+
+        <!-- декоративный орнамент: верхний хаб + 2 маршрута (длинный и короткий), стиль карты; скрыт ниже десктопа -->
+        <aside class="request-ornament" aria-hidden="true">
+          <svg viewBox="0 0 420 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ornRoute" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2b5a9e"/>
+                <stop offset="1" stop-color="#3d6fb5"/>
+              </linearGradient>
+            </defs>
+            <!-- два маршрута из верхней точки-хаба: один длиннее, другой короче (пунктир как на карте) -->
+            <g stroke="url(#ornRoute)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 16" opacity=".6">
+              <path d="M210 64 Q92 250 80 498"/>
+              <path d="M210 64 Q336 150 338 286"/>
+            </g>
+            <!-- города: кольцо + точка; верхняя — главный хаб (с доп. внешним кольцом) -->
+            <circle class="ornament__ring ornament__ring--faint" cx="210" cy="64" r="27"/>
+            <circle class="ornament__ring" cx="210" cy="64"  r="16"/><circle class="ornament__node" cx="210" cy="64"  r="7"/>
+            <circle class="ornament__ring" cx="80"  cy="498" r="13"/><circle class="ornament__node" cx="80"  cy="498" r="6"/>
+            <circle class="ornament__ring" cx="338" cy="286" r="13"/><circle class="ornament__node" cx="338" cy="286" r="6"/>
+          </svg>
+        </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================ КОНТАКТЫ ============================ -->
     <section class="section section--contacts" id="contacts">
       <div class="container">
@@ -407,7 +502,7 @@
     <svg class="icon"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="js/i18n.js?v=7"></script>
-  <script src="js/main.js?v=7"></script>
+  <script src="js/i18n.js?v=17"></script>
+  <script src="js/main.js?v=17"></script>
 </body>
 </html>

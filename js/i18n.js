@@ -109,6 +109,29 @@
     "partners.p2": "Our goal is to build resilient transport chains that help businesses deliver cargo reliably, transparently and on agreed timelines.",
     "partners.imgAlt": "A worker in a hard hat and a manager review a shipping route on a tablet at a sea port near a freight train",
 
+    "request.kicker": "Request",
+    "request.title": "Let's calculate your route and shipping cost",
+    "request.lead": "Contact us for a consultation on transporting your cargo. We will clarify the shipment details, destination and timing, and propose the optimal transport scheme.",
+    "request.nameLabel": "Name",
+    "request.namePh": "How should we address you",
+    "request.phoneLabel": "Phone",
+    "request.phonePh": "+7 (___) ___-__-__",
+    "request.companyLabel": "Company",
+    "request.companyPh": "Company name",
+    "request.cargoLabel": "Type of cargo",
+    "request.cargoPh": "Coal, metal, grain…",
+    "request.directionLabel": "Shipping direction",
+    "request.directionPh": "From → to",
+    "request.messageLabel": "Message",
+    "request.messagePh": "Shipment volume, timing, special requirements",
+    "request.consentText": "I consent to the processing of my personal data in accordance with the ",
+    "request.consentLink": "Privacy Policy",
+    "request.errRequired": "Please fill in this field",
+    "request.errPhone": "Please enter a valid phone number",
+    "request.errConsent": "Consent to personal data processing is required",
+    "request.submit": "Submit request",
+    "request.success": "Thank you! We will get in touch with you shortly.",
+
     "contacts.kicker": "Contacts",
     "contacts.title": "Get in touch",
     "contacts.lead": "Call us for a consultation and a shipping cost estimate — we will find the best route.",
@@ -134,7 +157,7 @@
 
   // Собираем все переводимые цели и заодно снимаем русские строки.
   function collect() {
-    const nodes = document.querySelectorAll(`[${PREFIX}], [${PREFIX}-content], [${PREFIX}-alt], [${PREFIX}-src], [${PREFIX}-aria-label]`);
+    const nodes = document.querySelectorAll(`[${PREFIX}], [${PREFIX}-content], [${PREFIX}-alt], [${PREFIX}-src], [${PREFIX}-aria-label], [${PREFIX}-placeholder]`);
     nodes.forEach((el) => {
       for (const attrNode of el.attributes) {
         const name = attrNode.name;
