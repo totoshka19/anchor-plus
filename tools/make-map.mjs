@@ -241,13 +241,6 @@ const build = t => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${
     <path d="${routes.vladSea.d}"/>
   </g>
 
-  <!-- чипы видов транспорта -->
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="${C.blue}">
-    ${chip(routes.moscowCis.mid, t.road)}
-    ${chip(routes.moscowKz.mid, t.rail)}
-    ${chip(routes.vladSea.mid, t.sea)}
-  </g>
-
   <!-- узлы направлений -->
   ${node(P.moscow)}
   ${node(P.cis)}

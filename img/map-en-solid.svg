@@ -20,13 +20,6 @@
     <path d="M1140 561 Q1149 656 1057 686"/>
   </g>
 
-  <!-- чипы видов транспорта -->
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#2b5a9e">
-    <g><rect x="318" y="413" width="76" height="34" rx="17" fill="#fff" stroke="#cdddf0"/><text x="356" y="436" text-anchor="middle">road</text></g>
-    <g><rect x="484" y="444" width="76" height="34" rx="17" fill="#fff" stroke="#cdddf0"/><text x="522" y="467" text-anchor="middle">rail</text></g>
-    <g><rect x="1091" y="623" width="65" height="34" rx="17" fill="#fff" stroke="#cdddf0"/><text x="1124" y="646" text-anchor="middle">sea</text></g>
-  </g>
-
   <!-- узлы направлений -->
   <g><circle cx="393" cy="410" r="17" fill="none" stroke="#2b5a9e" stroke-width="2.5" opacity=".4"/><circle cx="393" cy="410" r="9" fill="#2b5a9e"/></g>
   <g><circle cx="313" cy="434" r="17" fill="none" stroke="#2b5a9e" stroke-width="2.5" opacity=".4"/><circle cx="313" cy="434" r="9" fill="#2b5a9e"/></g>

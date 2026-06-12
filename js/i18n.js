@@ -79,7 +79,7 @@
     "geo.dir4": "China and other Asian countries",
     "geo.dir5": "Export routes via sea ports",
     "geo.dir6": "Domestic industrial routes across Russia",
-    "geo.map": "img/map-en-solid.svg?v=15",
+    "geo.map": "img/map-en-solid.svg?v=16",
     "geo.mapAlt": "Map of shipping destinations: Russia, Kazakhstan, CIS countries, sea ports, China and Asian countries",
     "geo.road": "Road transport",
     "geo.roadDesc": "Cargo pickup from the production, extraction or storage site and delivery to the station or terminal",
