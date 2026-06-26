@@ -404,13 +404,6 @@ section[id] { scroll-margin-top: var(--header-h); }
 .cooperation__media img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); }
 
 /* Заявка на расчёт */
-.request-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
-.request-ornament { display: none; }  /* виден только в десктоп-режиме */
-.request-ornament svg { width: 100%; height: auto; display: block; }
-/* города как на карте: кольцо + точка (пунктир маршрутов задан атрибутами на <g>) */
-.ornament__ring { fill: none; stroke: var(--c-blue); stroke-width: 2; opacity: .4; }
-.ornament__ring--faint { opacity: .2; }
-.ornament__node { fill: var(--c-blue); opacity: .85; }
 .request-form { max-width: 760px; }  /* без margin:auto — форма прижата влево, по одной оси с заголовком */
 /* align-items: start — поле с ошибкой не растягивает и не смещает соседнее по ряду */
 .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
@@ -592,8 +585,6 @@ section[id] { scroll-margin-top: var(--header-h); }
   }
 
   .about__grid { grid-template-columns: 1.6fr 1fr; gap: 48px; }
-  .request-layout { grid-template-columns: 1.6fr 1fr; gap: 48px; }
-  .request-ornament { display: block; }  /* в правой колонке рядом с формой, хаб вровень с её верхом */
   .about__text p, .cooperation__text p { font-size: 17px; }
   .carousel__track { gap: 24px; }
   .slide { flex-basis: calc((100% - 48px) / 3); }
