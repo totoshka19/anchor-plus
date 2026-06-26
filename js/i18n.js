@@ -139,7 +139,9 @@
     "footer.contactsTitle": "Contacts",
     "footer.copy": "JSC ANCHOR\u00A0PLUS. All rights reserved.",
     "footer.legal": "TIN 7720853862 · PSRN 1217700412731",
-    "footer.privacy": "Privacy Policy"
+    "footer.privacy": "Privacy Policy",
+
+    "privacy.docTitle": "Privacy Policy — ANCHOR PLUS"
   };
 
   /* --------------------------- Движок (общий) --------------------------- */

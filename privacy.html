@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="privacy.docTitle">Политика конфиденциальности — АНКОР ПЛЮС</title>
+  <meta name="description" content="Политика конфиденциальности АО «Анкор Плюс» в отношении обработки персональных данных посетителей сайта (152-ФЗ).">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=36">
+  <style>
+    /* --- Страница правового документа: типографика и поля --- */
+    .legal-header {
+      background: var(--grad-brand);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .legal-header__inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      min-height: var(--header-h); padding: 14px var(--container-pad);
+    }
+    .legal-header__logo { height: 40px; width: auto; filter: brightness(0) invert(1); }
+
+    /* Переключатель языка в тёмной шапке (тот же компонент, что на главной) */
+    .legal-header .lang-switch { margin-left: 0; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.32); }
+    .legal-header .lang-switch__btn { color: #dce6f5; }
+    .legal-header .lang-switch__btn.is-active { background: #fff; color: var(--c-navy); }
+
+    /* Переключение языковых версий документа по html[lang] (его выставляет i18n.js) */
+    .legal-lang--en { display: none; }
+    html[lang="en"] .legal-lang--ru { display: none; }
+    html[lang="en"] .legal-lang--en { display: block; }
+
+    .legal { padding: 40px 0 64px; }
+    .legal__container { max-width: 880px; }
+    .legal__title { font-size: clamp(24px, 4vw, 34px); margin-bottom: 6px; }
+    .legal__subtitle { color: var(--c-muted); font-size: 16px; margin-bottom: 28px; }
+
+    .legal h2 {
+      font-size: 20px; color: var(--c-navy);
+      margin: 34px 0 14px; padding-top: 8px;
+    }
+    .legal p { margin: 0 0 12px; color: var(--c-text); }
+    .legal ul { list-style: disc; padding-left: 22px; margin: 0 0 14px; }
+    .legal ul li { margin: 0 0 7px; color: var(--c-text); }
+    .legal a { color: var(--c-blue); text-decoration: underline; }
+    .legal a:hover { color: var(--c-navy); }
+    .legal dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 4px 0 0; }
+    .legal dt { color: var(--c-muted); }
+    .legal dd { margin: 0; color: var(--c-navy); font-weight: 600; }
+    @media (max-width: 560px) {
+      .legal dl { grid-template-columns: 1fr; gap: 2px; }
+      .legal dt { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG-спрайт: иконки контактов в футере -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  </svg>
+
+  <header class="legal-header">
+    <div class="container legal-header__inner">
+      <a href="index.html" aria-label="АНКОР ПЛЮС — на главную" data-i18n-aria-label="brand.name">
+        <img src="img/logo.svg" data-i18n-src="logo.src" alt="АНКОР ПЛЮС" data-i18n-alt="brand.name" class="legal-header__logo" width="200" height="54">
+      </a>
+
+      <div class="lang-switch" role="group" aria-label="Язык / Language">
+        <button type="button" class="lang-switch__btn is-active" data-lang="ru">RU</button>
+        <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal">
+    <div class="container legal__container">
+
+      <!-- ====================== РУССКАЯ ВЕРСИЯ ====================== -->
+      <div class="legal-lang legal-lang--ru">
+      <h1 class="legal__title">Политика конфиденциальности</h1>
+      <p class="legal__subtitle">в&nbsp;отношении обработки персональных данных посетителей сайта</p>
+
+      <h2>1. Общие положения</h2>
+      <p>1.1. Настоящая политика конфиденциальности (далее&nbsp;– Политика) разработана в&nbsp;соответствии с&nbsp;положениями Конституции Российской Федерации, Федерального закона от&nbsp;27&nbsp;июля 2006&nbsp;г. №&nbsp;149-ФЗ «Об&nbsp;информации, информационных технологиях и&nbsp;о&nbsp;защите информации», Федерального закона от&nbsp;27&nbsp;июля 2006&nbsp;г. №&nbsp;152-ФЗ «О&nbsp;персональных данных» (далее&nbsp;– Закон о&nbsp;персональных данных) и&nbsp;иными нормативными правовыми актами в&nbsp;области защиты и&nbsp;обработки персональных данных, действующими на&nbsp;территории Российской Федерации.</p>
+      <p>1.2. В&nbsp;настоящей Политике используются следующие понятия:</p>
+      <ul>
+        <li><strong>Сайт</strong> — «АНКОР ПЛЮС», расположенный на&nbsp;доменном имени anchor-plus.ru, предоставляющий услуги по&nbsp;организации перевозок;</li>
+        <li><strong>Администрация сайта</strong> — уполномоченные на&nbsp;управление сайтом работники Акционерного общества «Анкор Плюс», определяющие состав персональных данных пользователей сайта, цели сбора персональных данных, их&nbsp;обработку и&nbsp;хранение;</li>
+        <li><strong>Пользователь сайта</strong> — физическое лицо, использующее сайт, субъект персональных данных. В&nbsp;настоящей Политике под&nbsp;Пользователем также понимаются физические лица, представляющие интересы юридических лиц (работники, уполномоченные представители, контактные лица), а&nbsp;также индивидуальные предприниматели;</li>
+        <li><strong>Юридическое лицо-клиент</strong> — организация, которая вступает в&nbsp;договорные отношения с&nbsp;Администрацией сайта для&nbsp;получения услуг по&nbsp;организации перевозок. Данные о&nbsp;юридическом лице (наименование, ИНН, КПП, ОГРН, юридический адрес, банковские реквизиты) не&nbsp;являются персональными данными и&nbsp;обрабатываются в&nbsp;рамках договорных отношений, а&nbsp;также в&nbsp;соответствии с&nbsp;требованиями бухгалтерского и&nbsp;налогового законодательства;</li>
+        <li><strong>Персональные данные</strong> — любая информация, относящаяся к&nbsp;прямо или&nbsp;косвенно определённому или&nbsp;определяемому физическому лицу (субъекту персональных данных);</li>
+        <li><strong>Обработка персональных данных</strong> — любое действие (операция) или&nbsp;совокупность действий (операций), совершаемых с&nbsp;использованием средств автоматизации или&nbsp;без&nbsp;использования таких средств с&nbsp;персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных;</li>
+        <li><strong>Cookie-файлы</strong> — небольшие текстовые файлы, сохраняемые на&nbsp;устройстве пользователя, которые позволяют идентифицировать устройство и&nbsp;анализировать поведение на&nbsp;Сайте.</li>
+      </ul>
+      <p>1.3. Настоящая Политика распространяется на&nbsp;обработку персональных данных всех физических лиц, взаимодействующих с&nbsp;Сайтом, включая представителей юридических лиц. Положения Политики не&nbsp;применяются к&nbsp;информации о&nbsp;юридических лицах, которая не&nbsp;является персональными данными, однако такая информация обрабатывается Администрацией с&nbsp;соблюдением режима коммерческой тайны и&nbsp;условий договора.</p>
+      <p>1.4. Настоящая Политика устанавливает порядок получения, защиты, хранения, обработки и&nbsp;передачи персональных данных пользователей сайта, действует в&nbsp;отношении всей информации, которую администрация сайта может получить о&nbsp;пользователях во&nbsp;время использования ими сайта.</p>
+      <p>1.5. Настоящая Политика является общедоступным документом. Неограниченный доступ к&nbsp;Политике обеспечивается путем ее&nbsp;публикации на&nbsp;Сайте по&nbsp;адресу: <a href="https://anchor-plus.ru/privacy.html">https://anchor-plus.ru/privacy.html</a>.</p>
+
+      <h2>2. Персональные данные и иная информация, которые обрабатываются</h2>
+      <p><strong>2.1. Данные, предоставляемые пользователем (физическим лицом) добровольно</strong></p>
+      <p>Администрация сайта может обрабатывать следующие персональные данные физических лиц (в&nbsp;том числе представителей юридических лиц и&nbsp;индивидуальных предпринимателей):</p>
+      <ul>
+        <li>Фамилия, имя, отчество;</li>
+        <li>Адрес электронной почты (e-mail);</li>
+        <li>Контактный номер телефона;</li>
+        <li>Адрес фактического проживания и/или&nbsp;адрес доставки груза (при&nbsp;необходимости);</li>
+        <li>Платежные и&nbsp;финансовые данные (при&nbsp;оплате услуг по&nbsp;перевозке);</li>
+        <li>Должность, наименование организации-работодателя (для&nbsp;представителей юридических лиц);</li>
+        <li>Иные данные, которые пользователь самостоятельно указывает в&nbsp;формах обратной связи, заявок на&nbsp;перевозку, комментариев и&nbsp;т.п.</li>
+      </ul>
+      <p><strong>2.2. Данные о юридических лицах (не персональные)</strong></p>
+      <p>При&nbsp;оформлении заявки или&nbsp;заключении договора от&nbsp;имени юридического лица Администрация может обрабатывать следующие данные о&nbsp;самом юридическом лице:</p>
+      <ul>
+        <li>Полное и&nbsp;сокращённое наименование;</li>
+        <li>ИНН, КПП, ОГРН;</li>
+        <li>Юридический и&nbsp;фактический адрес;</li>
+        <li>Банковские реквизиты;</li>
+        <li>Сведения о&nbsp;руководителе (не&nbsp;являющиеся персональными данными в&nbsp;силу публичности).</li>
+      </ul>
+      <p>Указанные данные не&nbsp;являются персональными в&nbsp;смысле Федерального закона №&nbsp;152-ФЗ, однако обрабатываются Администрацией в&nbsp;рамках договорных отношений и&nbsp;защищаются как&nbsp;конфиденциальная информация в&nbsp;соответствии с&nbsp;условиями договора и&nbsp;законодательством о&nbsp;коммерческой тайне.</p>
+      <p><strong>2.3. Данные, собираемые автоматически</strong></p>
+      <p>При&nbsp;посещении Сайта автоматически собираются следующие технические данные (в&nbsp;том числе относящиеся к&nbsp;устройствам как&nbsp;физических, так&nbsp;и&nbsp;представителей юридических лиц):</p>
+      <ul>
+        <li>IP-адрес;</li>
+        <li>Тип и&nbsp;версия операционной системы и&nbsp;браузера;</li>
+        <li>Данные об&nbsp;устройстве (разрешение экрана, производитель, модель);</li>
+        <li>Дата и&nbsp;время посещения Сайта;</li>
+        <li>Просмотренные страницы, переходы и&nbsp;иные действия пользователя на&nbsp;Сайте;</li>
+        <li>Файлы cookie;</li>
+        <li>Географические данные (страна, город);</li>
+        <li>Источник перехода на&nbsp;Сайт.</li>
+      </ul>
+
+      <h2>3. Цели обработки персональных данных и иной информации</h2>
+      <p>Персональные данные пользователей (физических лиц) обрабатываются в&nbsp;следующих целях:</p>
+      <p>3.1. Идентификация пользователя для&nbsp;связи, предоставления доступа к&nbsp;сервисам, информации и&nbsp;материалам Сайта.</p>
+      <p>3.2. Обратная связь с&nbsp;пользователем — для&nbsp;обработки запросов, обращений и&nbsp;заявок, включая направление уведомлений и&nbsp;ответов на&nbsp;обращения.</p>
+      <p>3.3. Обработка заявок на&nbsp;организацию перевозок и&nbsp;оказание услуг — для&nbsp;заключения и&nbsp;исполнения договоров перевозки с&nbsp;пользователем (как&nbsp;физическим, так&nbsp;и&nbsp;юридическим лицом, через его представителя).</p>
+      <p>3.4. Информирование пользователя — для&nbsp;направления новостной и&nbsp;рекламной рассылки (при&nbsp;наличии согласия пользователя).</p>
+      <p>3.5. Улучшение качества Сайта и&nbsp;его содержания — для&nbsp;анализа предпочтений пользователей, изучения аудитории и&nbsp;повышения удобства использования Сайта.</p>
+      <p>3.6. Обеспечение безопасности — для&nbsp;предотвращения и&nbsp;пресечения нарушений, защиты от&nbsp;мошеннических и&nbsp;иных противоправных действий.</p>
+      <p>3.7. Ведение бухгалтерского и&nbsp;налогового учёта — в&nbsp;отношении данных о&nbsp;юридических лицах-клиентах (не&nbsp;персональные данные), что&nbsp;предусмотрено федеральным законодательством.</p>
+
+      <h2>4. Правовые основания обработки персональных данных</h2>
+      <p>Правовыми основаниями обработки персональных данных являются:</p>
+      <p>4.1. Согласие пользователя на&nbsp;обработку персональных данных, предоставляемое в&nbsp;соответствии со&nbsp;статьёй 9 Федерального закона №&nbsp;152-ФЗ. Для&nbsp;представителей юридических лиц такое согласие даётся ими как&nbsp;физическими лицами.</p>
+      <p>4.2. Договоры перевозки, заключаемые между Администрацией сайта и&nbsp;Пользователем (в&nbsp;том числе публичная оферта, пользовательское соглашение), а&nbsp;также договоры с&nbsp;юридическими лицами.</p>
+      <p>4.3. Федеральные законы и&nbsp;иные нормативные правовые акты, регулирующие отношения, связанные с&nbsp;деятельностью Администрации сайта (в&nbsp;частности, Гражданский кодекс, Налоговый кодекс, Устав автомобильного транспорта).</p>
+      <p>4.4. Законные интересы Администрации сайта, если&nbsp;при&nbsp;этом не&nbsp;нарушаются права и&nbsp;свободы субъектов персональных данных.</p>
+
+      <h2>5. Порядок и условия обработки персональных данных и иной информации</h2>
+      <p><strong>5.1. Обработка персональных данных</strong></p>
+      <p>5.1.1. Обработка персональных данных осуществляется с&nbsp;использованием средств автоматизации и&nbsp;без&nbsp;использования таких средств.</p>
+      <p>5.1.2. Администрация сайта принимает необходимые организационные и&nbsp;технические меры для&nbsp;защиты персональных данных от&nbsp;неправомерного доступа, уничтожения, изменения, блокирования, копирования, распространения, а&nbsp;также от&nbsp;иных неправомерных действий.</p>
+      <p><strong>5.2. Сроки обработки и хранения персональных данных и данных о юридических лицах</strong></p>
+      <p>5.2.1. Персональные данные физических лиц обрабатываются в&nbsp;течение срока, необходимого для&nbsp;достижения целей их&nbsp;обработки, но&nbsp;не&nbsp;дольше срока действия договора перевозки с&nbsp;пользователем или&nbsp;срока, установленного законодательством (в&nbsp;том числе для&nbsp;целей бухгалтерского учёта&nbsp;– 5&nbsp;лет).</p>
+      <p>5.2.2. Данные о&nbsp;юридических лицах хранятся в&nbsp;соответствии со&nbsp;сроками хранения документов, установленными законодательством о&nbsp;бухгалтерском учёте и&nbsp;архивном деле (не&nbsp;менее 5&nbsp;лет).</p>
+      <p>5.2.3. Все персональные данные граждан РФ&nbsp;хранятся исключительно на&nbsp;серверах, расположенных на&nbsp;территории Российской Федерации.</p>
+      <p>5.2.4. После достижения целей обработки или&nbsp;в&nbsp;случае отзыва согласия пользователя персональные данные подлежат уничтожению или&nbsp;обезличиванию, если&nbsp;иное не&nbsp;предусмотрено федеральным законом.</p>
+      <p><strong>5.3. Условия передачи персональных данных и данных о юридических лицах третьим лицам</strong></p>
+      <p>5.3.1. Администрация сайта не&nbsp;передаёт персональные данные пользователей и&nbsp;данные о&nbsp;юридических лицах третьим лицам, за&nbsp;исключением следующих случаев:</p>
+      <ul>
+        <li>Пользователь дал явное согласие на&nbsp;такую передачу;</li>
+        <li>Передача необходима для&nbsp;исполнения договора перевозки с&nbsp;пользователем (например, передача данных перевозчику, экспедитору или&nbsp;курьерской службе для&nbsp;организации транспортировки груза);</li>
+        <li>Передача предусмотрена федеральным законом или&nbsp;иным нормативным правовым актом (в&nbsp;частности, в&nbsp;налоговые органы, правоохранительные органы по&nbsp;их&nbsp;запросу);</li>
+        <li>Передача осуществляется в&nbsp;рамках поручения на&nbsp;обработку персональных данных третьему лицу при&nbsp;условии соблюдения требований Закона о&nbsp;персональных данных.</li>
+      </ul>
+      <p>5.3.2. При&nbsp;передаче персональных данных и&nbsp;иной конфиденциальной информации третьим лицам Администрация сайта требует от&nbsp;таких лиц соблюдения конфиденциальности и&nbsp;обеспечения безопасности данных.</p>
+      <p><strong>5.4. Использование файлов cookie</strong></p>
+      <p>5.4.1. Сайт использует файлы cookie для&nbsp;идентификации пользователей, анализа посещаемости, персонализации и&nbsp;повышения удобства использования Сайта.</p>
+      <p>5.4.2. Пользователь может отключить файлы cookie в&nbsp;настройках своего браузера. При&nbsp;этом некоторые функции Сайта могут стать недоступными.</p>
+
+      <h2>6. Согласие на обработку персональных данных</h2>
+      <p>6.1. Во&nbsp;всех формах на&nbsp;Сайте, где&nbsp;пользователь вводит свои данные, размещается чёткий текст с&nbsp;просьбой о&nbsp;Согласии. Пользователь должен самостоятельно поставить отметку (галочку) в&nbsp;специальном поле.</p>
+      <p>6.2. Для&nbsp;представителей юридических лиц согласие даётся ими как&nbsp;физическими лицами на&nbsp;обработку своих персональных данных. При&nbsp;этом данные о&nbsp;самом юридическом лице (не&nbsp;персональные) не&nbsp;требуют согласия по&nbsp;152-ФЗ, но&nbsp;их&nbsp;передача и&nbsp;обработка регулируются договором.</p>
+      <p>6.3. Пользователь вправе в&nbsp;любое время отозвать своё согласие на&nbsp;обработку персональных данных, направив соответствующее уведомление Администрации сайта.</p>
+
+      <h2>7. Права пользователей (физических лиц, включая представителей юридических лиц)</h2>
+      <p>Пользователь как&nbsp;субъект персональных данных имеет право:</p>
+      <p>7.1. На&nbsp;получение информации о&nbsp;факте обработки его персональных данных, об&nbsp;их&nbsp;составе, источниках, целях и&nbsp;сроках обработки.</p>
+      <p>7.2. На&nbsp;уточнение (обновление, изменение) своих персональных данных в&nbsp;случае их&nbsp;неполноты, устаревания или&nbsp;неточности.</p>
+      <p>7.3. На&nbsp;блокирование или&nbsp;уничтожение своих персональных данных в&nbsp;случае, если&nbsp;они являются неполными, устаревшими, недостоверными, получены незаконно или&nbsp;не&nbsp;являются необходимыми для&nbsp;заявленных целей обработки.</p>
+      <p>7.4. На&nbsp;отзыв согласия на&nbsp;обработку персональных данных в&nbsp;любое время.</p>
+      <p>7.5. На&nbsp;обжалование действий или&nbsp;бездействия Администрации сайта в&nbsp;уполномоченный орган по&nbsp;защите прав субъектов персональных данных (Роскомнадзор) или&nbsp;в&nbsp;судебном порядке.</p>
+      <p>7.6. Права, указанные в&nbsp;настоящем разделе, распространяются на&nbsp;всех физических лиц, в&nbsp;том числе на&nbsp;представителей юридических лиц, в&nbsp;отношении своих персональных данных. Права юридического лица как&nbsp;субъекта хозяйственной деятельности регулируются договором и&nbsp;законодательством, но&nbsp;не&nbsp;настоящей Политикой.</p>
+
+      <h2>8. Порядок реализации прав пользователя</h2>
+      <p>8.1. Для&nbsp;реализации своих прав пользователь направляет письменный запрос Администрации сайта по&nbsp;контактным данным, указанным в&nbsp;разделе 10 настоящей Политики.</p>
+      <p>8.2. Запрос должен содержать:</p>
+      <ul>
+        <li>Фамилию, имя, отчество пользователя (физического лица);</li>
+        <li>Номер основного документа, удостоверяющего личность пользователя (или&nbsp;его представителя);</li>
+        <li>Сведения о&nbsp;дате выдачи указанного документа и&nbsp;выдавшем его органе;</li>
+        <li>Подпись пользователя (или&nbsp;его представителя).</li>
+      </ul>
+      <p>8.3. Администрация сайта рассматривает запрос и&nbsp;дает ответ в&nbsp;срок, не&nbsp;превышающий 30&nbsp;дней с&nbsp;даты получения запроса, если&nbsp;иной срок не&nbsp;установлен федеральным законом.</p>
+
+      <h2>9. Ответственность за нарушение требований Политики</h2>
+      <p>9.1. Администрация сайта несёт ответственность за&nbsp;неисполнение или&nbsp;ненадлежащее исполнение обязанностей по&nbsp;обработке и&nbsp;защите персональных данных в&nbsp;соответствии с&nbsp;законодательством Российской Федерации.</p>
+      <p>9.2. За&nbsp;нарушение требований законодательства о&nbsp;персональных данных предусмотрена административная ответственность по&nbsp;статье 13.11 Кодекса Российской Федерации об&nbsp;административных правонарушениях.</p>
+      <p>9.3. Администрация сайта не&nbsp;несёт ответственности за&nbsp;персональные данные, которые пользователь опубликовал в&nbsp;открытом доступе на&nbsp;Сайте (комментарии, отзывы, форумы и&nbsp;т.п.), если&nbsp;иное не&nbsp;предусмотрено настоящей Политикой.</p>
+
+      <h2>10. Контактная информация оператора</h2>
+      <dl>
+        <dt>Полное наименование</dt><dd>Акционерное общество «Анкор Плюс»</dd>
+        <dt>Сокращённое наименование</dt><dd>АО «Анкор Плюс»</dd>
+        <dt>Юридический адрес</dt><dd>123610, город Москва, Краснопресненская наб., д.&nbsp;12, помещ.&nbsp;1/18</dd>
+        <dt>ИНН</dt><dd>7720853862</dd>
+        <dt>ОГРН</dt><dd>1217700412731</dd>
+        <dt>КПП</dt><dd>770301001</dd>
+        <dt>Генеральный директор</dt><dd>Суровец Дмитрий Александрович</dd>
+        <dt>Телефон</dt><dd><a href="tel:+79295847244">+7&nbsp;(929)&nbsp;584-72-44</a></dd>
+        <dt>Электронная почта</dt><dd><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></dd>
+        <dt>Адрес сайта</dt><dd><a href="https://anchor-plus.ru">anchor-plus.ru</a></dd>
+      </dl>
+
+      <h2>11. Заключительные положения</h2>
+      <p>11.1. Настоящая Политика вступает в&nbsp;силу с&nbsp;момента ее&nbsp;утверждения и&nbsp;действует бессрочно до&nbsp;ее&nbsp;замены новой Политикой.</p>
+      <p>11.2. Администрация сайта оставляет за&nbsp;собой право вносить изменения в&nbsp;настоящую Политику в&nbsp;одностороннем порядке. Новая редакция Политики вступает в&nbsp;силу с&nbsp;момента ее&nbsp;размещения на&nbsp;Сайте, если&nbsp;иное не&nbsp;предусмотрено новой редакцией Политики.</p>
+      <p>11.3. Актуальная версия Политики всегда доступна на&nbsp;Сайте по&nbsp;адресу: <a href="https://anchor-plus.ru/privacy.html">https://anchor-plus.ru/privacy.html</a>.</p>
+      <p>11.4. Настоящая Политика не&nbsp;распространяется на&nbsp;сайты третьих лиц, на&nbsp;которые пользователь может перейти по&nbsp;ссылкам, доступным на&nbsp;Сайте.</p>
+      </div><!-- /legal-lang--ru -->
+
+      <!-- ====================== ENGLISH VERSION ====================== -->
+      <div class="legal-lang legal-lang--en">
+      <h1 class="legal__title">Privacy Policy</h1>
+      <p class="legal__subtitle">regarding the processing of personal data of website visitors</p>
+
+      <h2>1. General provisions</h2>
+      <p>1.1. This Privacy Policy (hereinafter — the Policy) has been developed in accordance with the provisions of the Constitution of the Russian Federation, Federal Law No.&nbsp;149-FZ of 27&nbsp;July 2006 “On Information, Information Technologies and Information Protection”, Federal Law No.&nbsp;152-FZ of 27&nbsp;July 2006 “On Personal Data” (hereinafter — the Personal Data Law) and other regulatory legal acts in the field of protection and processing of personal data in force in the territory of the Russian Federation.</p>
+      <p>1.2. The following terms are used in this Policy:</p>
+      <ul>
+        <li><strong>Website</strong> — “ANCHOR PLUS”, located at the domain name anchor-plus.ru, providing transportation arrangement services;</li>
+        <li><strong>Website Administration</strong> — employees of Joint-Stock Company “Anchor Plus” authorized to manage the website, who determine the composition of users’ personal data, the purposes of collecting personal data, and their processing and storage;</li>
+        <li><strong>Website User</strong> — an individual who uses the website, a personal data subject. In this Policy, a User also means individuals representing the interests of legal entities (employees, authorized representatives, contact persons), as well as individual entrepreneurs;</li>
+        <li><strong>Legal entity client</strong> — an organization that enters into contractual relations with the Website Administration to receive transportation arrangement services. Data on the legal entity (name, TIN, KPP, PSRN, legal address, bank details) do not constitute personal data and are processed within the framework of contractual relations, as well as in accordance with accounting and tax legislation requirements;</li>
+        <li><strong>Personal data</strong> — any information relating directly or indirectly to a specified or identifiable individual (a personal data subject);</li>
+        <li><strong>Processing of personal data</strong> — any action (operation) or set of actions (operations) performed with or without the use of automation tools with personal data, including collection, recording, systematization, accumulation, storage, clarification (updating, modification), extraction, use, transfer (distribution, provision, access), depersonalization, blocking, deletion and destruction of personal data;</li>
+        <li><strong>Cookies</strong> — small text files stored on the user’s device that make it possible to identify the device and analyze behavior on the Website.</li>
+      </ul>
+      <p>1.3. This Policy applies to the processing of personal data of all individuals interacting with the Website, including representatives of legal entities. The provisions of the Policy do not apply to information about legal entities that does not constitute personal data; however, such information is processed by the Administration in compliance with the trade secret regime and the terms of the contract.</p>
+      <p>1.4. This Policy establishes the procedure for obtaining, protecting, storing, processing and transferring the personal data of website users and applies to all information that the website administration may obtain about users while they use the website.</p>
+      <p>1.5. This Policy is a publicly available document. Unrestricted access to the Policy is ensured by its publication on the Website at: <a href="https://anchor-plus.ru/privacy.html">https://anchor-plus.ru/privacy.html</a>.</p>
+
+      <h2>2. Personal data and other information that is processed</h2>
+      <p><strong>2.1. Data provided voluntarily by the user (an individual)</strong></p>
+      <p>The Website Administration may process the following personal data of individuals (including representatives of legal entities and individual entrepreneurs):</p>
+      <ul>
+        <li>Surname, first name, patronymic;</li>
+        <li>Email address;</li>
+        <li>Contact phone number;</li>
+        <li>Actual residential address and/or cargo delivery address (if necessary);</li>
+        <li>Payment and financial data (when paying for transportation services);</li>
+        <li>Position and name of the employer organization (for representatives of legal entities);</li>
+        <li>Other data that the user independently provides in feedback forms, transportation request forms, comments, etc.</li>
+      </ul>
+      <p><strong>2.2. Data on legal entities (non-personal)</strong></p>
+      <p>When placing a request or concluding a contract on behalf of a legal entity, the Administration may process the following data about the legal entity itself:</p>
+      <ul>
+        <li>Full and abbreviated name;</li>
+        <li>TIN, KPP, PSRN;</li>
+        <li>Legal and actual address;</li>
+        <li>Bank details;</li>
+        <li>Information about the director (not constituting personal data due to its public nature).</li>
+      </ul>
+      <p>This data does not constitute personal data within the meaning of Federal Law No.&nbsp;152-FZ; however, it is processed by the Administration within the framework of contractual relations and protected as confidential information in accordance with the terms of the contract and trade secret legislation.</p>
+      <p><strong>2.3. Data collected automatically</strong></p>
+      <p>When visiting the Website, the following technical data is automatically collected (including data relating to the devices of both individuals and representatives of legal entities):</p>
+      <ul>
+        <li>IP address;</li>
+        <li>Type and version of the operating system and browser;</li>
+        <li>Device data (screen resolution, manufacturer, model);</li>
+        <li>Date and time of visiting the Website;</li>
+        <li>Pages viewed, transitions and other user actions on the Website;</li>
+        <li>Cookies;</li>
+        <li>Geographical data (country, city);</li>
+        <li>Source of the referral to the Website.</li>
+      </ul>
+
+      <h2>3. Purposes of processing personal data and other information</h2>
+      <p>Users’ personal data (of individuals) is processed for the following purposes:</p>
+      <p>3.1. Identifying the user for communication and providing access to the services, information and materials of the Website.</p>
+      <p>3.2. Feedback with the user — for processing requests, inquiries and applications, including sending notifications and responses to inquiries.</p>
+      <p>3.3. Processing requests for the arrangement of transportation and provision of services — for concluding and performing transportation contracts with the user (both an individual and a legal entity, through its representative).</p>
+      <p>3.4. Informing the user — for sending newsletters and advertising mailings (subject to the user’s consent).</p>
+      <p>3.5. Improving the quality of the Website and its content — for analyzing user preferences, studying the audience and increasing the usability of the Website.</p>
+      <p>3.6. Ensuring security — for preventing and suppressing violations and protecting against fraudulent and other unlawful actions.</p>
+      <p>3.7. Maintaining accounting and tax records — in respect of data on legal entity clients (non-personal data), as provided for by federal legislation.</p>
+
+      <h2>4. Legal grounds for processing personal data</h2>
+      <p>The legal grounds for processing personal data are:</p>
+      <p>4.1. The user’s consent to the processing of personal data, provided in accordance with Article 9 of Federal Law No.&nbsp;152-FZ. For representatives of legal entities, such consent is given by them as individuals.</p>
+      <p>4.2. Transportation contracts concluded between the Website Administration and the User (including a public offer and a user agreement), as well as contracts with legal entities.</p>
+      <p>4.3. Federal laws and other regulatory legal acts governing relations connected with the activities of the Website Administration (in particular, the Civil Code, the Tax Code and the Charter of Road Transport).</p>
+      <p>4.4. The legitimate interests of the Website Administration, provided that the rights and freedoms of personal data subjects are not violated.</p>
+
+      <h2>5. Procedure and conditions for processing personal data and other information</h2>
+      <p><strong>5.1. Processing of personal data</strong></p>
+      <p>5.1.1. Personal data is processed both with and without the use of automation tools.</p>
+      <p>5.1.2. The Website Administration takes the necessary organizational and technical measures to protect personal data from unlawful access, destruction, modification, blocking, copying and distribution, as well as from other unlawful actions.</p>
+      <p><strong>5.2. Terms of processing and storage of personal data and data on legal entities</strong></p>
+      <p>5.2.1. The personal data of individuals is processed for the period necessary to achieve the purposes of its processing, but no longer than the term of the transportation contract with the user or the period established by law (including 5&nbsp;years for accounting purposes).</p>
+      <p>5.2.2. Data on legal entities is stored in accordance with the document retention periods established by legislation on accounting and archival matters (at least 5&nbsp;years).</p>
+      <p>5.2.3. All personal data of citizens of the Russian Federation is stored exclusively on servers located in the territory of the Russian Federation.</p>
+      <p>5.2.4. After the purposes of processing have been achieved, or in the event of the user’s withdrawal of consent, personal data is subject to destruction or depersonalization, unless otherwise provided by federal law.</p>
+      <p><strong>5.3. Conditions for transferring personal data and data on legal entities to third parties</strong></p>
+      <p>5.3.1. The Website Administration does not transfer users’ personal data or data on legal entities to third parties, except in the following cases:</p>
+      <ul>
+        <li>The user has given explicit consent to such transfer;</li>
+        <li>The transfer is necessary to perform the transportation contract with the user (for example, transferring data to a carrier, freight forwarder or courier service to arrange the transportation of cargo);</li>
+        <li>The transfer is provided for by federal law or another regulatory legal act (in particular, to tax authorities or law enforcement agencies upon their request);</li>
+        <li>The transfer is carried out within the framework of an assignment to process personal data to a third party, subject to compliance with the requirements of the Personal Data Law.</li>
+      </ul>
+      <p>5.3.2. When transferring personal data and other confidential information to third parties, the Website Administration requires such parties to maintain confidentiality and ensure data security.</p>
+      <p><strong>5.4. Use of cookies</strong></p>
+      <p>5.4.1. The Website uses cookies to identify users, analyze traffic, personalize and improve the usability of the Website.</p>
+      <p>5.4.2. The user can disable cookies in their browser settings. In this case, some functions of the Website may become unavailable.</p>
+
+      <h2>6. Consent to the processing of personal data</h2>
+      <p>6.1. On all forms on the Website where the user enters their data, a clear text with a request for Consent is placed. The user must independently tick the box in a dedicated field.</p>
+      <p>6.2. For representatives of legal entities, consent is given by them as individuals to the processing of their personal data. At the same time, data on the legal entity itself (non-personal) does not require consent under 152-FZ, but its transfer and processing are governed by the contract.</p>
+      <p>6.3. The user has the right to withdraw their consent to the processing of personal data at any time by sending a corresponding notice to the Website Administration.</p>
+
+      <h2>7. Rights of users (individuals, including representatives of legal entities)</h2>
+      <p>As a personal data subject, the user has the right:</p>
+      <p>7.1. To receive information about the fact of the processing of their personal data, its composition, sources, purposes and terms of processing.</p>
+      <p>7.2. To clarify (update, modify) their personal data in the event that it is incomplete, outdated or inaccurate.</p>
+      <p>7.3. To block or destroy their personal data in the event that it is incomplete, outdated, unreliable, obtained unlawfully or is not necessary for the stated processing purposes.</p>
+      <p>7.4. To withdraw consent to the processing of personal data at any time.</p>
+      <p>7.5. To appeal against the actions or inaction of the Website Administration to the authorized body for the protection of the rights of personal data subjects (Roskomnadzor) or in court.</p>
+      <p>7.6. The rights specified in this section apply to all individuals, including representatives of legal entities, in respect of their personal data. The rights of a legal entity as a business entity are governed by the contract and legislation, but not by this Policy.</p>
+
+      <h2>8. Procedure for exercising the user’s rights</h2>
+      <p>8.1. To exercise their rights, the user sends a written request to the Website Administration using the contact details specified in Section 10 of this Policy.</p>
+      <p>8.2. The request must contain:</p>
+      <ul>
+        <li>The surname, first name and patronymic of the user (an individual);</li>
+        <li>The number of the main identity document of the user (or their representative);</li>
+        <li>Information about the date of issue of the said document and the authority that issued it;</li>
+        <li>The signature of the user (or their representative).</li>
+      </ul>
+      <p>8.3. The Website Administration reviews the request and provides a response within a period not exceeding 30&nbsp;days from the date of receipt of the request, unless a different period is established by federal law.</p>
+
+      <h2>9. Liability for violation of the requirements of the Policy</h2>
+      <p>9.1. The Website Administration bears responsibility for failure to perform or improper performance of obligations regarding the processing and protection of personal data in accordance with the legislation of the Russian Federation.</p>
+      <p>9.2. Administrative liability for violation of the requirements of personal data legislation is provided for under Article 13.11 of the Code of the Russian Federation on Administrative Offences.</p>
+      <p>9.3. The Website Administration bears no responsibility for personal data that the user has published in the public domain on the Website (comments, reviews, forums, etc.), unless otherwise provided by this Policy.</p>
+
+      <h2>10. Operator contact information</h2>
+      <dl>
+        <dt>Full name</dt><dd>Joint-Stock Company “Anchor Plus”</dd>
+        <dt>Abbreviated name</dt><dd>JSC “Anchor Plus”</dd>
+        <dt>Legal address</dt><dd>123610, Moscow, Krasnopresnenskaya nab. 12, office&nbsp;1/18</dd>
+        <dt>TIN</dt><dd>7720853862</dd>
+        <dt>PSRN</dt><dd>1217700412731</dd>
+        <dt>KPP</dt><dd>770301001</dd>
+        <dt>General Director</dt><dd>Dmitry Aleksandrovich Surovets</dd>
+        <dt>Phone</dt><dd><a href="tel:+79295847244">+7&nbsp;(929)&nbsp;584-72-44</a></dd>
+        <dt>Email</dt><dd><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></dd>
+        <dt>Website</dt><dd><a href="https://anchor-plus.ru">anchor-plus.ru</a></dd>
+      </dl>
+
+      <h2>11. Final provisions</h2>
+      <p>11.1. This Policy comes into force from the moment of its approval and remains in effect indefinitely until it is replaced by a new Policy.</p>
+      <p>11.2. The Website Administration reserves the right to make changes to this Policy unilaterally. The new version of the Policy comes into force from the moment it is posted on the Website, unless otherwise provided by the new version of the Policy.</p>
+      <p>11.3. The current version of the Policy is always available on the Website at: <a href="https://anchor-plus.ru/privacy.html">https://anchor-plus.ru/privacy.html</a>.</p>
+      <p>11.4. This Policy does not apply to third-party websites that the user may access via links available on the Website.</p>
+      </div><!-- /legal-lang--en -->
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col footer__brand">
+        <img src="img/logo.svg" data-i18n-src="logo.src" alt="АНКОР ПЛЮС" data-i18n-alt="brand.name" class="footer__logo" width="200" height="54">
+        <p class="footer__desc" data-i18n="footer.desc">Надёжная&nbsp;логистика для&nbsp;крупных&nbsp;промышленных&nbsp;партий</p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title" data-i18n="footer.navTitle">Навигация</h4>
+        <ul class="footer__list">
+          <li><a href="index.html#about"    data-i18n="nav.about">О&nbsp;компании</a></li>
+          <li><a href="index.html#cargo"    data-i18n="nav.cargo">Грузы</a></li>
+          <li><a href="index.html#geo"      data-i18n="nav.geo">География</a></li>
+          <li><a href="index.html#why"      data-i18n="nav.why">Преимущества</a></li>
+          <li><a href="index.html#partners" data-i18n="nav.partners">Сотрудничество</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title" data-i18n="footer.contactsTitle">Контакты</h4>
+        <ul class="footer__list footer__list--contacts">
+          <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+79295847244">+7 (929) 584-72-44</a></li>
+          <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></li>
+          <li><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="contacts.addressValue">123112, г.&nbsp;Москва, Пресненская&nbsp;наб., д.&nbsp;12, помещ.&nbsp;15/27</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>©&nbsp;<span id="year">2026</span> <span data-i18n="footer.copy">АО&nbsp;«АНКОР&nbsp;ПЛЮС». Все&nbsp;права защищены.</span></p>
+        <a class="footer__policy" href="privacy.html" data-i18n="footer.privacy">Политика&nbsp;конфиденциальности</a>
+        <p class="footer__legal" data-i18n="footer.legal">ИНН&nbsp;7720853862 · ОГРН&nbsp;1217700412731</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Наверх">
+    <svg class="icon"><use href="#i-arrow-up"/></svg>
+  </button>
+
+  <script>
+    // Кнопка «наверх»: появляется после прокрутки, плавно возвращает к началу (как на главной)
+    (function () {
+      var toTop = document.getElementById("toTop");
+      if (!toTop) return;
+      function onScroll() { toTop.classList.toggle("is-visible", window.scrollY > 500); }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    })();
+  </script>
+
+  <!-- Переключение языка RU/EN (общий движок и общий выбор языка с главной) -->
+  <script src="js/i18n.js?v=24"></script>
+
+</body>
+</html>

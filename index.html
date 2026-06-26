@@ -392,8 +392,7 @@
 
           <label class="consent" for="rf-consent">
             <input class="consent__box" id="rf-consent" name="consent" type="checkbox" required aria-describedby="rf-consent-err">
-            <!-- TODO(юрист): заменить href="#" на реальную «Политику конфиденциальности» (обязательно по 152-ФЗ) -->
-            <span class="consent__text"><span data-i18n="request.consentText">Я&nbsp;даю согласие на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;</span><a href="#" class="consent__link" data-i18n="request.consentLink">Политикой&nbsp;конфиденциальности</a></span>
+            <span class="consent__text"><span data-i18n="request.consentText">Я&nbsp;даю согласие на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;</span><a href="privacy.html" class="consent__link" target="_blank" rel="noopener" data-i18n="request.consentLink">Политикой&nbsp;конфиденциальности</a></span>
           </label>
           <span class="field__error" id="rf-consent-err" data-i18n="request.errConsent" hidden>Необходимо согласие на обработку персональных данных</span>
 
@@ -439,8 +438,7 @@
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <p>©&nbsp;<span id="year">2026</span> <span data-i18n="footer.copy">АО&nbsp;«АНКОР&nbsp;ПЛЮС». Все&nbsp;права защищены.</span></p>
-        <!-- TODO(юрист): href="#" → реальная «Политика конфиденциальности» (152-ФЗ); тот же адрес продублировать в чекбоксе согласия формы заявки -->
-        <a class="footer__policy" href="#" data-i18n="footer.privacy">Политика&nbsp;конфиденциальности</a>
+        <a class="footer__policy" href="privacy.html" data-i18n="footer.privacy">Политика&nbsp;конфиденциальности</a>
         <p class="footer__legal" data-i18n="footer.legal">ИНН&nbsp;7720853862 · ОГРН&nbsp;1217700412731</p>
       </div>
     </div>
@@ -450,7 +448,7 @@
     <svg class="icon"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="js/i18n.js?v=23"></script>
+  <script src="js/i18n.js?v=24"></script>
   <script src="js/main.js?v=17"></script>
 </body>
 </html>
