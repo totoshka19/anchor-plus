@@ -140,6 +140,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 
 /* Переключатель языка */
 .lang-switch {
+  margin-left: 14px;
   display: inline-flex; align-items: center;
   border-radius: 999px; overflow: hidden;
   /* обводка inset-тенью: активная кнопка перекрывает её своим градиентом */

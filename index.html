@@ -8,7 +8,7 @@
         content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
   <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
   <!-- ?v= обходит месячный кэш браузера (см. .htaccess): изменив css/js, увеличьте номер -->
-  <link rel="stylesheet" href="css/style.css?v=30">
+  <link rel="stylesheet" href="css/style.css?v=32">
   <!-- хиро-фон виден сразу: начинаем грузить раньше, чем его обнаружит разбор CSS -->
   <link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
 </head>
@@ -405,26 +405,26 @@
         </form>
 
         <!-- декоративный орнамент: верхний хаб + 2 маршрута (длинный и короткий), стиль карты; скрыт ниже десктопа -->
-        <aside class="request-ornament" aria-hidden="true">
-          <svg viewBox="0 0 420 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ornRoute" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#2b5a9e"/>
-                <stop offset="1" stop-color="#3d6fb5"/>
-              </linearGradient>
-            </defs>
-            <!-- два маршрута из верхней точки-хаба: один длиннее, другой короче (пунктир как на карте) -->
-            <g stroke="url(#ornRoute)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 16" opacity=".6">
-              <path d="M210 64 Q92 250 80 498"/>
-              <path d="M210 64 Q336 150 338 286"/>
-            </g>
-            <!-- города: кольцо + точка; верхняя — главный хаб (с доп. внешним кольцом) -->
-            <circle class="ornament__ring ornament__ring--faint" cx="210" cy="64" r="27"/>
-            <circle class="ornament__ring" cx="210" cy="64"  r="16"/><circle class="ornament__node" cx="210" cy="64"  r="7"/>
-            <circle class="ornament__ring" cx="80"  cy="498" r="13"/><circle class="ornament__node" cx="80"  cy="498" r="6"/>
-            <circle class="ornament__ring" cx="338" cy="286" r="13"/><circle class="ornament__node" cx="338" cy="286" r="6"/>
-          </svg>
-        </aside>
+<!--        <aside class="request-ornament" aria-hidden="true">-->
+<!--          <svg viewBox="0 0 420 560" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <defs>-->
+<!--              <linearGradient id="ornRoute" x1="0" y1="0" x2="1" y2="1">-->
+<!--                <stop offset="0" stop-color="#2b5a9e"/>-->
+<!--                <stop offset="1" stop-color="#3d6fb5"/>-->
+<!--              </linearGradient>-->
+<!--            </defs>-->
+<!--            &lt;!&ndash; два маршрута из верхней точки-хаба: один длиннее, другой короче (пунктир как на карте) &ndash;&gt;-->
+<!--            <g stroke="url(#ornRoute)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 16" opacity=".6">-->
+<!--              <path d="M210 64 Q92 250 80 498"/>-->
+<!--              <path d="M210 64 Q336 150 338 286"/>-->
+<!--            </g>-->
+<!--            &lt;!&ndash; города: кольцо + точка; верхняя — главный хаб (с доп. внешним кольцом) &ndash;&gt;-->
+<!--            <circle class="ornament__ring ornament__ring&#45;&#45;faint" cx="210" cy="64" r="27"/>-->
+<!--            <circle class="ornament__ring" cx="210" cy="64"  r="16"/><circle class="ornament__node" cx="210" cy="64"  r="7"/>-->
+<!--            <circle class="ornament__ring" cx="80"  cy="498" r="13"/><circle class="ornament__node" cx="80"  cy="498" r="6"/>-->
+<!--            <circle class="ornament__ring" cx="338" cy="286" r="13"/><circle class="ornament__node" cx="338" cy="286" r="6"/>-->
+<!--          </svg>-->
+<!--        </aside>-->
         </div>
       </div>
     </section>
