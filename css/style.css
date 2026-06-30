@@ -433,6 +433,10 @@ section[id] { scroll-margin-top: var(--header-h); }
 .request-form__actions .btn { width: 100%; }
 .request-form__status { font-size: 15px; font-weight: 600; color: var(--c-blue); opacity: 1; transition: opacity .5s ease; }
 .request-form__status.is-hiding { opacity: 0; }
+.request-form__status--error { color: #c0392b; }
+
+/* Honeypot: скрытое поле-ловушка для ботов, недоступное людям */
+.rf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
 /* ============================================================
    ФУТЕР — база (мобайл): одна колонка

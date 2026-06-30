@@ -6,7 +6,7 @@
   <title data-i18n="meta.title">АНКОР ПЛЮС — международные перевозки угля, металла и ферросплавов</title>
   <meta name="description" data-i18n-content="meta.description"
         content="Транспортно-экспедиционная компания. Железнодорожные и мультимодальные перевозки угля, металлопродукции и ферросплавов из России через Казахстан в страны Азии.">
-  <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="img/favicon.svg?v=3" type="image/svg+xml">
   <!-- ?v= обходит месячный кэш браузера (см. .htaccess): изменив css/js, увеличьте номер -->
   <link rel="stylesheet" href="css/style.css?v=36">
   <!-- хиро-фон виден сразу: начинаем грузить раньше, чем его обнаружит разбор CSS -->
@@ -59,14 +59,14 @@
           <li><a href="#why"      class="nav__link" data-i18n="nav.why">Преимущества</a></li>
           <li><a href="#partners" class="nav__link" data-i18n="nav.partners">Сотрудничество</a></li>
           <li><a href="#request" class="nav__link" data-i18n="nav.request">Заявка</a></li>
-          <li class="nav__phone"><a href="tel:+79295847244" class="nav__link">+7 (929) 584-72-44</a></li>
+          <li class="nav__phone"><a href="tel:+79295655330" class="nav__link">+7 (929) 565-53-30</a></li>
         </ul>
       </nav>
 
       <div class="header__actions">
-        <a href="tel:+79295847244" class="header__phone">
+        <a href="tel:+79295655330" class="header__phone">
           <svg class="icon"><use href="#i-phone"/></svg>
-          <span class="header__phone-num">+7 (929) 584-72-44</span>
+          <span class="header__phone-num">+7 (929) 565-53-30</span>
         </a>
 
         <div class="lang-switch" role="group" aria-label="Язык / Language">
@@ -343,11 +343,11 @@
           <p class="section__lead" data-i18n="request.lead">Свяжитесь с&nbsp;нами, чтобы получить консультацию по&nbsp;перевозке вашего груза. Мы&nbsp;уточним характеристики партии, направление, сроки и&nbsp;предложим оптимальную транспортную схему.</p>
         </div>
 
-        <!-- Реальная отправка не подключена: форма валидируется на клиенте,
-             submit перехватывается в js/main.js (блок «Форма заявки»).
-             TODO(бэкенд): слать данные на свой эндпойнт (fetch POST) и показывать
-             успех только после ответа сервера. -->
-        <form class="request-form reveal" id="requestForm" novalidate>
+        <!-- Отправка: js/main.js перехватывает submit, валидирует на клиенте
+             и шлёт данные POST-запросом на send.php (PHP на хостинге Beget),
+             который отправляет заявку на e-mail. Успех показывается только
+             после ответа сервера. -->
+        <form class="request-form reveal" id="requestForm" action="send.php" method="post" novalidate>
           <div class="form-grid">
             <div class="field">
               <label class="field__label" for="rf-name"><span data-i18n="request.nameLabel">Имя</span> <span class="field__req" aria-hidden="true">*</span></label>
@@ -390,6 +390,9 @@
             </div>
           </div>
 
+          <!-- Ловушка для ботов: настоящие пользователи это поле не видят и не заполняют -->
+          <input class="rf-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <label class="consent" for="rf-consent">
             <input class="consent__box" id="rf-consent" name="consent" type="checkbox" required aria-describedby="rf-consent-err">
             <span class="consent__text"><span data-i18n="request.consentText">Я&nbsp;даю согласие на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;</span><a href="privacy.html" class="consent__link" target="_blank" rel="noopener" data-i18n="request.consentLink">Политикой&nbsp;конфиденциальности</a></span>
@@ -399,6 +402,7 @@
           <div class="request-form__actions">
             <button class="btn btn--primary" type="submit" data-i18n="request.submit">Отправить заявку</button>
             <p class="request-form__status" id="requestStatus" role="status" aria-live="polite" data-i18n="request.success" hidden>Спасибо! Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;ближайшее время.</p>
+            <p class="request-form__status request-form__status--error" id="requestError" role="alert" aria-live="assertive" data-i18n="request.error" hidden>Не&nbsp;удалось отправить заявку. Попробуйте ещё&nbsp;раз или&nbsp;позвоните нам.</p>
           </div>
         </form>
       </div>
@@ -428,7 +432,7 @@
       <div class="footer__col">
         <h4 class="footer__title" data-i18n="footer.contactsTitle">Контакты</h4>
         <ul class="footer__list footer__list--contacts">
-          <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+79295847244">+7 (929) 584-72-44</a></li>
+          <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+79295655330">+7 (929) 565-53-30</a></li>
           <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:info@anchor-plus.ru">info@anchor-plus.ru</a></li>
           <li><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="contacts.addressValue">123112, г.&nbsp;Москва, Пресненская&nbsp;наб., д.&nbsp;12, помещ.&nbsp;15/27</span></li>
         </ul>

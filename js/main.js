@@ -160,10 +160,12 @@
     }
   }
 
-  /* --- Форма заявки (клиентская валидация; отправка — заглушка) --- */
+  /* --- Форма заявки: клиентская валидация + отправка на send.php --- */
   const requestForm = document.getElementById("requestForm");
   if (requestForm) {
     const statusEl = document.getElementById("requestStatus");
+    const errorEl  = document.getElementById("requestError");
+    const submitBtn = requestForm.querySelector('[type="submit"]');
 
     // сообщение об успехе: показать и через паузу плавно убрать
     let statusTimer = null;
@@ -232,15 +234,28 @@
 
       if (firstInvalid) { firstInvalid.focus(); return; }
 
-      // ---- ЗАГЛУШКА ОТПРАВКИ ----
-      // TODO(бэкенд): заменить на реальную отправку, напр.:
-      //   const data = Object.fromEntries(new FormData(requestForm));
-      //   fetch("/api/request", { method: "POST", body: JSON.stringify(data) })
-      //     .then(() => showSuccess()).catch(() => showError());
-      // и показывать успех только после ответа сервера.
-      console.warn("[requestForm] Отправка не подключена — это клиентская заглушка.");
-      requestForm.reset();
-      showStatus();
+      // ---- ОТПРАВКА НА СЕРВЕР (send.php) ----
+      if (errorEl) errorEl.hidden = true;
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(requestForm.action, {
+        method: "POST",
+        body: new FormData(requestForm),
+        headers: { "Accept": "application/json" },
+      })
+        .then((res) => res.ok ? res.json() : Promise.reject(res))
+        .then((data) => {
+          if (!data || !data.ok) return Promise.reject(data);
+          requestForm.reset();   // успех только после ответа сервера
+          showStatus();
+        })
+        .catch((err) => {
+          console.error("[requestForm] Не удалось отправить заявку:", err);
+          if (errorEl) errorEl.hidden = false;
+        })
+        .finally(() => {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
 
     // маска телефона: на лету вырезаем нецифры и форматируем как +7 (XXX) XXX-XX-XX

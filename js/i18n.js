@@ -131,6 +131,7 @@
     "request.errConsent": "Consent to personal data processing is required",
     "request.submit": "Submit request",
     "request.success": "Thank you! We will get in touch with you shortly.",
+    "request.error": "Failed to send the request. Please try again or call us.",
 
     "contacts.addressValue": "123112, Moscow, Presnenskaya nab. 12, office 15/27",
 
