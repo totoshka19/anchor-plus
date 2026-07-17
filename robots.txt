@@ -1,0 +1,7 @@
+# robots.txt for https://anchorplus.ru/
+User-agent: *
+Allow: /
+Disallow: /send.php
+Disallow: /tools/
+
+Sitemap: https://anchorplus.ru/sitemap.xml
