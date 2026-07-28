@@ -43,16 +43,17 @@ HTML намеренно без комментариев (исходник вид
 
 ## Подтверждение прав в поисковиках
 
-Когда придёт код из Яндекс.Вебмастера или Google Search Console — добавить
-в `<head>` `index.html`:
+**Google Search Console** — ресурс «Префикс в URL» `https://anchorplus.ru/`,
+подтверждение мета-тегом `google-site-verification` в `<head>` `index.html`.
+Тег не удалять: Google периодически перепроверяет право собственности.
+
+**Яндекс.Вебмастер** — когда придёт код, добавить рядом тег:
 
 ```html
 <meta name="yandex-verification" content="КОД">
-<meta name="google-site-verification" content="КОД">
 ```
 
-и залить файл. Ресурс в Search Console заводить как «Префикс в URL»
-(`https://anchorplus.ru/`), не «Домен» (тот требует DNS-записи).
+и залить `index.html`.
 
 ## Плашка cookie
 
