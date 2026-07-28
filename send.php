@@ -35,7 +35,8 @@ if (!empty($_POST['website'])) {
 }
 
 // Собираем и чистим поля
-function field(string $name, int $max = 1000): string {
+// (без типов в сигнатуре: код должен работать и на PHP 5.6 хостинга)
+function field($name, $max = 1000) {
     $v = isset($_POST[$name]) ? (string) $_POST[$name] : '';
     $v = trim($v);
     $v = mb_substr($v, 0, $max);
@@ -76,7 +77,7 @@ $lines = [
     'Сообщение:   ' . ($message   !== '' ? $message   : '—'),
     '',
     'Время: ' . date('Y-m-d H:i:s'),
-    'IP:    ' . ($_SERVER['REMOTE_ADDR'] ?? '—'),
+    'IP:    ' . (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '—'),
 ];
 $body = implode("\n", $lines);
 
