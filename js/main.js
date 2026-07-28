@@ -248,6 +248,9 @@
           if (!data || !data.ok) return Promise.reject(data);
           requestForm.reset();   // успех только после ответа сервера
           showStatus();
+          // Цель Метрики «zayavka»: считаем успешно отправленные заявки.
+          // typeof-проверка — чтобы форма работала и при заблокированном счётчике.
+          if (typeof ym === "function") ym(111092687, "reachGoal", "zayavka");
         })
         .catch((err) => {
           console.error("[requestForm] Не удалось отправить заявку:", err);

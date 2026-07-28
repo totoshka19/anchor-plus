@@ -142,7 +142,12 @@
     "footer.legal": "TIN 7720853862 · PSRN 1217700412731",
     "footer.privacy": "Privacy Policy",
 
-    "privacy.docTitle": "Privacy Policy — ANCHOR PLUS"
+    "privacy.docTitle": "Privacy Policy — ANCHOR PLUS",
+
+    "cookie.aria": "Cookie notice",
+    "cookie.text": "This website uses cookies. By continuing to use the website, you accept the terms of the ",
+    "cookie.link": "Privacy Policy",
+    "cookie.btn": "OK"
   };
 
   /* --------------------------- Движок (общий) --------------------------- */
